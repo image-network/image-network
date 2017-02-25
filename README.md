@@ -20,7 +20,7 @@
 - [ ] K-means clustering/Image similarity [Sriram]
 
 ### Firebase Docs
-1. Adding firebase to application HTML
+#### Adding firebase to application HTML
 ```javascript
 <script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
 <script>
@@ -36,7 +36,7 @@
     firebase.initializeApp(config)
 </script>
 ```
-2. Authenticating users with email/password
+#### Authenticating users with email/password
 ```javascript
 // Call this function after getting form elements from the document
 firebase.auth().createUserWithEmailAndPassword(email, password)
