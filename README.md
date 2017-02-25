@@ -1,6 +1,6 @@
 # **image-network**
 ## CSCI-201L Group Project
----
+
 ### Members:
 1. Sriram Somasundaram
 2. Richard Ju
