@@ -16,7 +16,7 @@
 - [ ] Front end design (displaying network + UI) [Richard]
 - [x] GitHub Organization (You're in it!!! :metal:) [Kevin]
 - [ ] Check Facebook API [Kevin/Ethan]
-- [ ] Database (Firebase + Firebase auth) [Ethan]
+- [ ] Database (Firebase + Firebase auth) [Kevin/Ethan]
 - [ ] K-means clustering/Image similarity [Sriram]
 
 
