@@ -13,7 +13,7 @@
 > similarities in their profile pictures or pictures.
 
 ### Task List:
-- [ ] Front end design (displaying network + UI) [Richard]
+- [x] Front end design (displaying network + UI : 75%) [Richard]
 - [x] GitHub Organization (You're in it!!! :metal:) [Kevin]
 - [ ] Check Facebook API [Kevin/Ethan]
 - [ ] Database (Firebase + Firebase auth) [Kevin/Ethan]
