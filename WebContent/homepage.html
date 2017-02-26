@@ -3,8 +3,9 @@
 <head>
 <!-- START SIGMA IMPORTS -->
 <script src = "sigma-min/sigma.min.js"></script>
-<script src = "sigma-min/plugins/sigma.plugins.dragNodes.min.js"></script>
 <script src = "sigma-min/plugins/sigma.layout.forceAtlas2.min.js"></script>
+<script src= "sigma-min/plugins/sigma.parsers.gexf.min.js"></script>
+<script src= "sigma-min/plugins/sigma.parsers.json.min.js"></script>
 <script src = "sigma-min/plugins/sigma.plugins.animate.min.js"></script>
 <script src = "sigma-min/plugins/sigma.renderers.customEdgeShapes.min.js"></script>
 <script src = "sigma-min/plugins/sigma.canvas.edgehovers.curve.js"></script>
@@ -24,42 +25,41 @@
 	   <img src="images/logotentative.png" width=400/>
 	</div>
 	<div id="database-graph"></div>
-	<script>drawRandomGraph('database-graph', 50, ((18*17) / 2), '#dddddd', '#2fa87e', 1, 15)</script>
+	<!--<script>drawRandomGraph('database-graph', 50, 100, '#dddddd', '#2fa87e', 1, 15)</script>
+	!-->
+	<script>drawFromGEXF('sigma-data/netgraph.gexf','database-graph', '#dddddd', '#2fa87e', 1, 15)</script>
 	
 
 <div id="negativeSpace-reverse" style="animation: fadeInFromRight 0.1s forwards;">
 		<table class="buttonholder" style="padding: 10px;">
 			<tr>
-				<td></td>
-				<td><button class="animatedButton"
+				<td><button class="animatedButton" style="width:100%; height: 100%"
+						onmousedown="rotateCamera(-22.5 * (3.14/180))">RL</button></td>
+				<td><button class="animatedButton" style="width:100%; height: 100%"
 						onmousedown="moveCamera('up', 50)">^</button></td>
-				<td></td>
+				<td><button class="animatedButton" style="width:100%; height: 100%"
+						onmousedown="rotateCamera(22.5 * (3.14/180))">RR</button></td>
 			</tr>
 			<tr>
-				<td><button class="animatedButton"
+				<td><button class="animatedButton" style="width:100%; height: 100%"
 						onmousedown="moveCamera('left', 50)"><</button></td>
-				<td><button class="animatedButton">o</button></td>
-			
-				<td><button class="animatedButton"
+				<td><button class="animatedButton" style="width:100%; height: 100%"
+						onmousedown="restoreCamera(1.0); selectNode(currentUser);">o</button></td>
+				<td><button class="animatedButton" style="width:100%; height: 100%"
 						onmousedown="moveCamera('right', 50)">></button></td>
 			</tr>
 			<tr>
-				<td></td>
-				<td><button class="animatedButton"
+			<td><button class="animatedButton" style="width:100%; height: 100%"
+						onmousedown="zoomCamera(1.25)">+</button></td>
+				<td><button class="animatedButton" style="width:100%; height: 100%"
 						onmousedown="moveCamera('down', 50)">v</button></td>
-				<td></td>
+			<td><button class="animatedButton" style="width:100%; height: 100%"
+						onmousedown="zoomCamera(0.5)">-</button></td>
+
 			</tr>
 		</table>
 		
 		<table class="buttonholder" style="padding: 10px;">
-				<tr>
-				<td><button class="animatedButton"
-						onmousedown="zoomCamera(1.5)">+</button></td>
-				<td><button class="animatedButton"
-				        onmousedown="restoreCamera(1.0)">o</button></td>
-				<td><button class="animatedButton"
-						onmousedown="zoomCamera(0.75)">-</button></td>
-			</tr>
 		</table>
 		
 	</div>
@@ -73,7 +73,7 @@
 					</td>
 					<td>
 				<table style="text-align: left">
-					<tr><td>John Smith</td></tr>
+					<tr><td>Jean Valjean</td></tr>
 					<tr><td><a href="login.html">Profile Details</a></td></tr>
 					<tr><td><a href="login.html">Sign Out</a></td></tr>
 				</table>
