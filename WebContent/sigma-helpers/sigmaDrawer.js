@@ -63,6 +63,7 @@ do
 	}
 while(i < N);
 
+/*
 for (i = 0; i < E; i++)
 	  g.edges.push({
 	    id: 'e' + i,
@@ -71,6 +72,7 @@ for (i = 0; i < E; i++)
 	    size: Math.random(),
 	    color: edgeColor
 	  });
+	  */
 
 //Instantiate sigma:
 mainSigma = new sigma({
@@ -78,7 +80,7 @@ mainSigma = new sigma({
   settings:{
 	  minNodeSize: nodeSizeMin, 
 	  maxNodeSize: nodeSizeMax, 
-	  mouseEnabled: true,
+	  mouseEnabled: false,
 	  scalingMode: 'outside'
 	  }
 });
@@ -87,7 +89,7 @@ mainCamera.goTo(
 {
 	x: homeNodeX,
 	y: homeNodeY,
-	ratio: 0.6
+	ratio: 0.3
 });
 
 var r = mainSigma.addRenderer(
@@ -212,6 +214,26 @@ function moveCamera(direction, steps)
 			}, 
 			{duration: 200});
 }
+function zoomCamera(zoomRatio)
+{
+	
+	if(mainCamera == undefined) return;
+	sigma.misc.animation.camera (mainCamera,
+			{
+				ratio: mainCamera.ratio / zoomRatio
+			}, 
+			{duration: 200});
+}
+function restoreCamera(zoomRatio)
+{
+	
+	if(mainCamera == undefined) return;
+	sigma.misc.animation.camera (mainCamera,
+			{
+				ratio: zoomRatio
+			}, 
+			{duration: 200});
+}
 function nudgeNodes()
 {
 	if(mainSigma == undefined) return;
@@ -221,7 +243,4 @@ function nudgeNodes()
 	}
 	);
 	mainSigma.refresh();
-}
-window.onload = function(){
-	window.setInterval(nudgeNodes, 50);
 }
