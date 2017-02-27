@@ -49,10 +49,28 @@ a:hover
 }
 #negativeSpace
 {
+	z-index: -1;
 	position: fixed;
 	left: 5%;
 	right: 450px;
 	top: 10%;
+}
+#graph-navigation-bar
+{
+	position: fixed;
+	overflow: hidden;
+	right: 0;
+	left: 300px;
+	top:10%;
+	height: 50px;
+	background-color: #444444;
+	animation: fadeIn 1s forwards;
+	text-align: left;
+	
+}
+.buttonholder
+{
+	margin-top: 70px;
 }
 #negativeSpace-reverse
 {
@@ -122,6 +140,7 @@ color:#616161;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
   border: 0;
+  cursor: pointer;
   
 	animation-duration: 0.1s;
 	animation-fill-mode: both;
@@ -219,7 +238,6 @@ transform: translateY(-150px);
 {
 	user-select: none;
 	position: fixed;
-	box-shadow: 0px -2px 2px rgba(34,34,34,0.6);
 	right: 0;
 	left: 300px;
 	top: 10%;

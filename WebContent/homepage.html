@@ -31,7 +31,7 @@
 	
 
 <div id="negativeSpace-reverse" style="animation: fadeInFromRight 0.1s forwards;">
-		<table class="buttonholder" style="padding: 10px;">
+		<table class="buttonholder">
 			<tr>
 				<td><button class="animatedButton" style="width:100%; height: 100%"
 						onmousedown="rotateCamera(-22.5 * (3.14/180))">RL</button></td>
@@ -59,8 +59,6 @@
 			</tr>
 		</table>
 		
-		<table class="buttonholder" style="padding: 10px;">
-		</table>
 		
 	</div>
 	<div id="database-adjacent-reverse" style="animation: fadeInFromRight 0.1s ease forwards;">
@@ -99,6 +97,14 @@
 			
 
 		</div>
+	</div>
+	<script>function search(){selectNode(document.getElementById("graphSearch").value)}</script>
+	<div id="graph-navigation-bar">
+					<input id="graphSearch" class="textField" type="text" style="width: 200px; margin-left: 10px"
+					 onKeyDown= "if(event.keyCode == 13) search();" />
+					<button class="animatedButton" style="height: 100%"
+				onclick="search()">SEARCH</button>
+		
 	</div>
 </body>
 </html>
