@@ -5,6 +5,7 @@ var mainSigma = undefined;
 var masterNodeCount=0;
 var currentUser = "Valjean";
 var conductorName=currentUser;
+var defaultColor;
 //forceAtlas2 documentation: http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0098679
 
 /* DrawRandomGraph - generates a random set of nodes, then applies the FA2 algorithm to their positions.
@@ -29,6 +30,7 @@ function drawRandomGraph(divId, nodeCount, edgeCount, nodeColor, edgeColor, node
     };
 
 i=0;
+defaultColor = edgeColor;
 masterNodeCount = N;
 var jL = 0;
 
@@ -146,6 +148,7 @@ function drawGraphStill(divId, nodeCount, edgeCount, nodeColor, edgeColor, nodeS
     };
 
 i=0;
+defaultColor = edgeColor;
 masterNodeCount = N;
 var jL = 0;
 
@@ -247,6 +250,7 @@ mainSigma.refresh();
 function drawFromJSON(filepath,divId, nodeColor, edgeColor, nodeSizeMin, nodeSizeMax)
 {
 	// Instantiate sigma:
+	defaultColor = edgeColor;
 	mainSigma = new sigma({
 		  settings:{
 			  minNodeSize: nodeSizeMin, 
@@ -296,6 +300,7 @@ function drawFromJSON(filepath,divId, nodeColor, edgeColor, nodeSizeMin, nodeSiz
 function drawFromGEXF(filepath,divId, nodeColor, edgeColor, nodeSizeMin, nodeSizeMax)
 {
 	// Instantiate sigma:
+	defaultColor = edgeColor;
 	mainSigma = new sigma({
 		  settings:{
 			  minNodeSize: nodeSizeMin, 
@@ -436,6 +441,7 @@ function findNodeId(nodeId)
 
 function selectNode(nodeName)
 {
+	findNode(conductorName).color = defaultColor;
 	var node = findNode(nodeName);
 	if(node == undefined) return;
 
@@ -449,11 +455,19 @@ function selectNode(nodeName)
 			{duration: 1000});
 	
 	node.color = '#ffffff';
+	conductorName = nodeName;
 	
 	
 	mainSigma.refresh();
 }
 setTimeout(function(){selectNode(conductorName)},100);
+
+window.onload = function()
+{
+	mainSigma.bind('clickNode', function(e){
+	selectNode(e.data.node.label);
+});
+}
 /*
 sigma.classes.graph.addMethod('neighbors', function(nodeId) {
     var k,
