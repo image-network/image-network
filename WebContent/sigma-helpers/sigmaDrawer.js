@@ -5,7 +5,11 @@ var mainSigma = undefined;
 var masterNodeCount=0;
 var currentUser = "Valjean";
 var conductorName=currentUser;
+<<<<<<< HEAD
 var defaultColor;
+=======
+var mainColor = '#000000';
+>>>>>>> f9dbaadcc9418289cd2f61396ff0e61efe5c0393
 //forceAtlas2 documentation: http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0098679
 
 /* DrawRandomGraph - generates a random set of nodes, then applies the FA2 algorithm to their positions.
@@ -28,6 +32,7 @@ function drawRandomGraph(divId, nodeCount, edgeCount, nodeColor, edgeColor, node
       nodes: [],
       edges: []
     };
+	mainColor = edgeColor;
 
 i=0;
 defaultColor = edgeColor;
@@ -146,7 +151,7 @@ function drawGraphStill(divId, nodeCount, edgeCount, nodeColor, edgeColor, nodeS
       nodes: [],
       edges: []
     };
-
+	mainColor = edgeColor;
 i=0;
 defaultColor = edgeColor;
 masterNodeCount = N;
@@ -249,6 +254,7 @@ mainSigma.refresh();
  */
 function drawFromJSON(filepath,divId, nodeColor, edgeColor, nodeSizeMin, nodeSizeMax)
 {
+	mainColor = edgeColor;
 	// Instantiate sigma:
 	defaultColor = edgeColor;
 	mainSigma = new sigma({
@@ -299,6 +305,7 @@ function drawFromJSON(filepath,divId, nodeColor, edgeColor, nodeSizeMin, nodeSiz
  */
 function drawFromGEXF(filepath,divId, nodeColor, edgeColor, nodeSizeMin, nodeSizeMax)
 {
+	mainColor = edgeColor;
 	// Instantiate sigma:
 	defaultColor = edgeColor;
 	mainSigma = new sigma({
@@ -441,7 +448,11 @@ function findNodeId(nodeId)
 
 function selectNode(nodeName)
 {
+<<<<<<< HEAD
 	findNode(conductorName).color = defaultColor;
+=======
+	findNode(conductorName).color = mainColor;
+>>>>>>> f9dbaadcc9418289cd2f61396ff0e61efe5c0393
 	var node = findNode(nodeName);
 	if(node == undefined) return;
 
@@ -464,9 +475,14 @@ setTimeout(function(){selectNode(conductorName)},100);
 
 window.onload = function()
 {
+<<<<<<< HEAD
 	mainSigma.bind('clickNode', function(e){
 	selectNode(e.data.node.label);
 });
+=======
+mainSigma.bind('clickNode', function(e) {selectNode(e.data.node.label)});
+mainSigma.refresh();
+>>>>>>> f9dbaadcc9418289cd2f61396ff0e61efe5c0393
 }
 /*
 sigma.classes.graph.addMethod('neighbors', function(nodeId) {
