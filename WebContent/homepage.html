@@ -73,9 +73,9 @@
 					</td>
 					<td>
 				<table style="text-align: left">
-					<tr><td>Jean Valjean</td></tr>
+					<tr><td id="profile"></td></tr>
 					<tr><td><a href="login.html">Profile Details</a></td></tr>
-					<tr><td><a href="login.html">Sign Out</a></td></tr>
+					<tr><td><a href="#" id="sign-out">Sign Out</a></td></tr>
 				</table>
 				</td>
 				</tr>
@@ -100,5 +100,62 @@
 
 		</div>
 	</div>
+	<script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyBXwd0A6u5uWUHX9GxiT-TcwkAac_X-Wx4",
+	    authDomain: "image-network.firebaseapp.com",
+	    databaseURL: "https://image-network.firebaseio.com",
+	    storageBucket: "image-network.appspot.com",
+	    messagingSenderId: "268082674497"
+	  };
+	  firebase.initializeApp(config);
+	  
+
+      // Call initApp() upon the window loading
+      window.onload = function() {
+        initHome();
+      }
+	</script>
+	<script>
+   		function handleLogOut() {
+   			var user = firebase.auth().currentUser;
+   			if (user) {
+   				// Sign out the user
+   				firebase.auth().signOut().then(function() {
+   					// Sign out successful
+   				}).catch(function() {
+   					// Error occurred
+   				});
+   			}
+   		}
+
+   		function initHome() {
+    		firebase.auth().onAuthStateChanged(function(user) {
+				if (user) {
+					// Populate username info
+					var profile = document.getElementById('profile');
+
+					// Get the current user
+					var user = firebase.auth().currentUser;
+					if (user) {
+						var ref = firebase.database().ref('users/' + user.uid);
+						ref.once('value').then(function(snapshot) {
+							var child = snapshot.child('email').val();
+							profile.innerHTML = child;
+						}).catch(function(error){
+							// Error occurred
+						});
+					}
+				} else {
+					// User is not signed in, segue to login page
+					window.location = 'login.html';
+				}
+			});
+
+			document.getElementById('sign-out').addEventListener('click', handleLogOut, false);
+		}
+   	</script>
 </body>
 </html>
