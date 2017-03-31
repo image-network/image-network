@@ -114,22 +114,16 @@ a:hover
 }
 .textField
 {
- border-color:#cccccc; 
-adding:13px; 
-font-size:17px; 
-border-width:3px; 
-border-radius:1px; 
-border-bottom: 3px solid #ccccff;
-padding-top: 10px;
-background-color: #efefef;
-border-right: none;
-border-top: 1px solid #cccccc;
-border-left:none;
-font-style:none; 
-font-weight:normal; 
-font-family:sans-serif;
-width:100%;
-color:#616161;  
+    width: 80%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 17px;
+    line-height: 1.43;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 2px solid #d3d3d3;
+    border-radius: 4px;
 }
 .animatedButton
 {
@@ -141,6 +135,7 @@ color:#616161;
   text-decoration: none;
   border: 0;
   cursor: pointer;
+  border-radius: 4px;
   
 	animation-duration: 0.1s;
 	animation-fill-mode: both;

@@ -333,10 +333,10 @@ function drawFromGEXF(filepath,divId, nodeColor, edgeColor, nodeSizeMin, nodeSiz
 		sigma.parsers.gexf(filepath,mainSigma, function(s)
 				{
 					s.refresh();
-					/*
-					s.startForceAtlas2({worker: true, barnesHutOptimize: false, slowDown: 10.0, edgeWeightInfluence: 0.0});
-					setTimeout(function(){s.stopForceAtlas2();}, 5000);
-					*/
+					
+					s.startForceAtlas2({worker: true, barnesHutOptimize: false, slowDown: 10.0, edgeWeightInfluence: 0.0, iterationsPerRender: 1000});
+					setTimeout(function(){s.stopForceAtlas2();}, 100);
+					
 				});
 
 }
