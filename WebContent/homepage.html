@@ -24,13 +24,8 @@
 	<div id="headerContent" style="padding-left: 2px; text-align: left; vertical-align:middle; animation: fadeInFromTop 0.1s forwards;">
 	   <img src="images/logotentative.png" width=400/>
 	</div>
-	<div id="database-graph"></div>
-	<!--<script>drawRandomGraph('database-graph', 50, 100, '#dddddd', '#2fa87e', 1, 15)</script>
-	!-->
-	<script>drawFromGEXF('sigma-data/netgraph.gexf','database-graph', '#dddddd', '#2fa87e', 1, 15)</script>
-	
 
-<div id="negativeSpace-reverse" style="animation: fadeInFromRight 0.1s forwards;">
+<div id="negativeSpace-reverse" style="right: 0; animation: fadeInFromRight 0.1s forwards;">
 		<table class="buttonholder">
 			<tr>
 				<td><button class="animatedButton" style="width:100%; height: 100%"
@@ -61,9 +56,9 @@
 		
 		
 	</div>
-	<div id="database-adjacent-reverse" style="animation: fadeInFromRight 0.1s ease forwards;">
-	<div id="database-subfill">
-			<table style="text-align: center; background-color: #555555; width:100%;">
+	<div id="database-adjacent-reverse">
+	<div id="database-subfill" style="background-color: #555555;">
+			<table style="text-align: center; background-color: #555555; width:100%; border-bottom: 1px solid grey;">
 				<tr>
 				<td>
 				<img src="images/default_profilepicture.png" style="padding: 10px; border-radius: 25px;"
@@ -79,33 +74,64 @@
 				</tr>
 			</table>
 
+			
+			<p class="buttonDivider" style="text-align: left">MY IMGNET</p>
 			<button class="animatedButton" style="width: 100%; text-align: left"
 				onclick="location.href = 'homepage.html'">DASHBOARD</button>
 			<button class="animatedButton" style="width: 100%; text-align: left"
 				onclick="location.href = 'homepage.html'">IMAGES</button>
 			<button class="animatedButton" style="width: 100%; text-align: left"
 				onclick="location.href = 'homepage.html'">EXPLORE</button>
+			<p class="buttonDivider" style="text-align: left">SOCIAL</p>
 			<button class="animatedButton" style="width: 100%; text-align: left"
 				onclick="location.href = 'homepage.html'">USERS</button>
 			<button class="animatedButton" style="width: 100%; text-align: left"
 				onclick="location.href = 'homepage.html'">POKES</button>
 			<button class="animatedButton" style="width: 100%; text-align: left"
 				onclick="location.href = 'homepage.html'">FRIEND SEARCH</button>
+			<p class="buttonDivider" style="text-align: left">SITE</p>
 			<button class="animatedButton" style="width: 100%; text-align: left"
-				onclick="location.href = 'homepage.html'">OTHER</button>
+				onclick="location.href = 'homepage.html'">CONTACT</button>
 				
-			
+			<script type="text/javascript">
+				sideToggled = false;
+				function toggleNavBar()
+				{
+					    if(!sideToggled)
+						document.getElementById("database-adjacent-reverse").style.animation = "offscreenLeft 0.1s forwards";
+					    else
+						document.getElementById("database-adjacent-reverse").style.animation = "backToScreenLeft 0.1s forwards";
+					    sideToggled = !sideToggled;
+				}
 
+				function mouseOverNavBar()
+				{
+					    if(document.getElementById("database-adjacent-reverse").style.animation === "offscreenLeft 0.1s forwards")
+						document.getElementById("database-adjacent-reverse").style.animation = "backToScreenLeft 0.1s forwards";
+					    sideToggled = false;
+				}
+			</script>	
+			<button class = "symbolButton" id="sideToggle" onclick="toggleNavBar()" onmouseover="mouseOverNavBar()" style="position: absolute; left: 100%; bottom: 0; width: 10px; padding: 0; height: 100%;">|||</button>
 		</div>
 	</div>
-	<script>function search(){selectNode(document.getElementById("graphSearch").value)}</script>
-	<div id="graph-navigation-bar">
+	 
+	
+	<!--
+	<div id="networkcontainer" style="top: 850px;">
+		<div id="graph-navigation-bar" style="float: left;">
 					<input id="graphSearch" class="textField" type="text" style="width: 200px; margin-left: 10px"
 					 onKeyDown= "if(event.keyCode == 13) search();" />
 					<button class="animatedButton" style="height: 100%"
 				onclick="search()">SEARCH</button>
-		
+		</div>
 	</div>
+	-->
+	<div id="database-graph"></div>
+	<!--<script>drawRandomGraph('database-graph', 50, 100, '#dddddd', '#2fa87e', 1, 15)</script>
+	!-->
+	<script>drawFromGEXF('sigma-data/netgraph.gexf','database-graph', '#dddddd', '#2fa87e', 1, 15)</script>
+	<script>function search(){selectNode(document.getElementById("graphSearch").value)}</script>
+	
 	<script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
 	<script>
 	  // Initialize Firebase
