@@ -21,7 +21,7 @@ a:hover
    left: 0;
    padding-left:20px;
    width: 100%;
-   height:10%;
+   height:45px;
    background-color:#1fa86e;
 }
 
@@ -36,6 +36,7 @@ a:hover
    animation: fadeInSlight 3s ease-in forwards;
    background-color: #001100;
    background-image: url(../images/generic_lake.jpg);
+   z-index: -100;
 }
 #network-graph
 {
@@ -53,7 +54,7 @@ a:hover
 	position: fixed;
 	left: 5%;
 	right: 450px;
-	top: 10%;
+	top: 45px;
 }
 #graph-navigation-bar
 {
@@ -75,7 +76,7 @@ a:hover
 {
 	position: fixed;
 	right: 2%;
-	top: 10%;
+	top: 45px;
 	text-align: center;
 }
 #titleHeader
@@ -154,6 +155,7 @@ a:hover
   border: 0;
   cursor: pointer;
   border-radius: 0px;
+  border-left: 0.25px solid grey;
 }
 
 
@@ -223,6 +225,7 @@ opacity: 1;
 transform: translateY(-150px);
 }
 }
+
 @keyframes fadeInFromTop
 {
 	0%{opacity: 0; transform: translateY(-25px);}
@@ -232,6 +235,11 @@ transform: translateY(-150px);
 {
 	0%{opacity: 0;}
 	100%{opacity: 1;}
+}
+@keyframes fadeOut
+{
+	0%{opacity: 1;}
+	100%{opacity: 0;}
 }
 @keyframes fadeInFromRight
 {
@@ -272,10 +280,8 @@ transform: translateY(-150px);
 }
 #database-graph
 {
-	user-select: none;
 	right: 0;
-	float: left;
-	top: 10%;
+	top: 45px;
 	bottom: 0%;
 	background-color:#111111;
 	animation: fadeIn 2s;
@@ -285,7 +291,7 @@ transform: translateY(-150px);
 	position: fixed;
 	width: 300px;
 	right: 0;
-	top: 10%;
+	top: 45px;
 	bottom: 0;
 	line-spacing: 1;
 	background-color: #111111;
@@ -295,7 +301,7 @@ transform: translateY(-150px);
 	position: fixed;
 	width: 300px;
 	left: 0;
-	top: 10%;
+	top: 45px;
 	bottom: 0;
 	line-spacing: 1;
 	background-color: #444444;

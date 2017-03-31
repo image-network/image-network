@@ -464,12 +464,6 @@ function selectNode(nodeName)
 	mainSigma.refresh();
 }
 setTimeout(function(){selectNode(conductorName)},100);
-
-window.onload = function()
-{
-mainSigma.bind('clickNode', function(e) {selectNode(e.data.node.label)});
-mainSigma.refresh();
-}
 /*
 sigma.classes.graph.addMethod('neighbors', function(nodeId) {
     var k,
