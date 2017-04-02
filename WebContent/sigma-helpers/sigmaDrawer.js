@@ -279,6 +279,9 @@ function drawFromJSON(filepath,divId, nodeColor, edgeColor, nodeSizeMin, nodeSiz
 		sigma.parsers.json(filepath,mainSigma, function(s)
 				{
 					s.refresh();
+					
+					s.startForceAtlas2({worker: true, barnesHutOptimize: false, slowDown: 10.0, edgeWeightInfluence: 0.0, iterationsPerRender: 1000});
+					setTimeout(function(){s.stopForceAtlas2();}, 100);
 				});
 		
 }
@@ -477,15 +480,18 @@ function writeNodeToDiv(eventNode, container)
 	buffer += "</td><td>"
 	buffer += "<button class='animatedButton' style='width: 100%' >View Profile Details</button>" +
 			"<br /> " +
-			"<button class='animatedButton' style='width: 100%' >View Images </button>"
+			"<button class='animatedButton' style='width: 100%' >Connect</button>"
 	buffer += "</td></tr></table>"
 
 	buffer += "<h1 class='buttonDivider' > Status </h1>"
 	buffer += "<p style='font-style: italic; color: #cccccc;'>" + eventNode.data.node.status + "</p>";
 	buffer += "<h1 class='buttonDivider' > Recent Photos </h1>"
+	if(eventNode.data.node.images != undefined)
+	{
 	buffer +="<img src="+eventNode.data.node.images.Picture1+" style='border-radius:6px' width=50 height=50/> ";
 	buffer += "<img src="+eventNode.data.node.images.Picture2+" style='border-radius:6px' width=50 height=50/> ";
 	buffer += "<img src="+eventNode.data.node.images.Picture3+" style='border-radius:6px' width=50 height=50/> ";
+	}
 	container.innerHTML = buffer;
 	
 }

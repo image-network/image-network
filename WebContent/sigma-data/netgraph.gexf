@@ -6,10 +6,13 @@
   </meta>
   <graph defaultedgetype="undirected" mode="static">
     <attributes class="node" mode="static">
-      <attribute id="modularity_class" title="Modularity Class" type="integer"></attribute>
+      <attribute id="modularity_class" title="Modularity Class" type="integer"></attribute>   
+      <attribute id="fname" title="first name" type="string"></attribute>
+      <attribute id="lname" title="last name" type="string"></attribute>
+   
     </attributes>
     <nodes>
-      <node id="0" label="Myriel" streetname="'Myrbitch'">
+      <node id="0" label="Myriel">
         <attvalues>
           <attvalue for="modularity_class" value="0"></attvalue>
         </attvalues>
@@ -86,10 +89,12 @@
         <viz:size value="4.0"></viz:size>
         <viz:position x="-89.34107" y="234.56128" z="0.0"></viz:position>
       </node>
-      <node id="11" label="Valjean" streetname="monsieurmadeleine">
+      <node id="11" label="Valjean">
         <attvalues>
           <attvalue for="modularity_class" value="1"></attvalue>
-        </attvalues>
+          <attvalue for="fname" value="Jean"></attvalue>
+          <attvalue for="lname" value="Valjean"></attvalue>
+        </attvalues> 
         <viz:size value="100.0"></viz:size>
         <viz:position x="-87.93029" y="-6.8120565" z="0.0"></viz:position>
       </node>

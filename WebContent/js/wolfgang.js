@@ -4,7 +4,6 @@ currentY ="0";
 document.onmouseover = function(e)
 {
 	wolfgangInspect(e.target);
-	console.log(e.target);
 }
 function getOffset( el ) {
 	var _x = 0;

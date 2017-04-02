@@ -55,8 +55,6 @@
 				
 			</table>
 		</div>
-		<div id='network-graph' 
-	style="opacity:0; animation: fadeIn 1s ease-in 0s forwards;"></div>
 	<div id="negativeSpace">
 		<h1 class="hoverableText"
 			style="opacity: 0; animation: fadeIn 1s ease-in 0.5s forwards;">A
@@ -67,6 +65,9 @@
 					<p class="hoverableText"
 			style="opacity: 0; animation: fadeIn 1s ease-in 4.5s forwards;">Contribute to the collective scrapbook of millions of users.</p> <br />	
 					</div> <br />
+	
+		<div id='network-graph' 
+	style="opacity:0; animation: fadeIn 1s ease-in 0s forwards;"></div>
 	<script>drawGraphStill('network-graph', 50, ((25*24) / 2), '#2fa87e', '#2fa87e', 1, 3)</script>
 	
 	<!-- MARK: Firebase scripts -->
@@ -85,7 +86,7 @@
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
             setTimeout(function() {
-              window.location = 'homepage.html';
+              window.location = 'dashboard.html';
             }, 2000);
           }
         });
