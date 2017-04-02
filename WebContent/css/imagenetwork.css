@@ -14,6 +14,18 @@ a:hover
 {
 	color: #1fa86e;
 }
+#nodeDetails
+{
+	text-align: left;
+	background-color: #444444;
+	color: #ffffff;
+	padding: 16px;
+	border-radius:2px;
+	table-layout: fixed;
+	width: 380px;
+	height: 520px;
+	line-spacing: 1;
+}
 #headerContent
 {
    position: fixed;
@@ -236,6 +248,18 @@ transform: translateY(-150px);
 	0%{opacity: 0;}
 	100%{opacity: 1;}
 }
+
+@keyframes scaleIn
+{
+	0%{transform: scale(0);}
+	100%{transform: scale(1);}
+}
+
+@keyframes scaleOut
+{
+	0%{transform: scale(1);}
+	100%{transform: scale(0);}
+}
 @keyframes fadeOut
 {
 	0%{opacity: 1;}
@@ -298,6 +322,7 @@ transform: translateY(-150px);
 }
 #database-adjacent-reverse
 {
+	transform: translateX(-100%);
 	position: fixed;
 	width: 300px;
 	left: 0;
@@ -305,6 +330,7 @@ transform: translateY(-150px);
 	bottom: 0;
 	line-spacing: 1;
 	background-color: #444444;
+	z-index: 100;
 }
 #database-subfill
 {

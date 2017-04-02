@@ -2,21 +2,53 @@
   "nodes": [
     {
       "id": "n0",
-      "label": "A node",
+      "label": "knagoogin",
+      "fname": "Kevin",
+      "lname": "Nguyen",
+      "username": "knagoogin@usc.edu",
+      "status": "Furiously clicking on Wolfgang",
+      "images": {
+      	"Picture1": "images/1932303_700b.jpg",
+      	"Picture2": "images/1932303_700b.jpg",
+      	"Picture3": "images/1932303_700b.jpg"
+      	},
+      "profilePicture": "images/1932303_700b.jpg",
       "x": 0,
       "y": 0,
       "size": 3
     },
     {
       "id": "n1",
-      "label": "Another node",
+      "label": "sirspindlylegs",
+      "fname": "Wolfgang",
+      "lname": "von Buttrope",
+      "username": "sirspindly@spindlyuniversity.edu",
+      "status": "Busy helping people navigate imgcrawler",
+      "images": {
+      	"Picture1": "images/1932303_700b.jpg",
+      	"Picture2": "images/1932303_700b.jpg",
+      	"Picture3": "images/1932303_700b.jpg"
+      	},
+      
+      "profilePicture": "images/spider.png",
       "x": 3,
       "y": 1,
       "size": 2
     },
     {
       "id": "n2",
-      "label": "And a last one",
+      "label": "tehgrader",
+      "fname": "Jeffrey",
+      "lname": "Miller",
+      "username": "jeffyboy",
+      "status": "Making students' lives miserable, one test at a time",
+      "images": {
+      	"Picture1": "http://www-scf.usc.edu/~csci201/images/matteo_tanaka.jpg",
+      	"Picture2": "http://www-scf.usc.edu/~csci201/images/dana_thomas.jpg",
+      	"Picture3": "http://www-scf.usc.edu/~csci201/images/anthony_tu.jpg"
+      	},
+      
+      "profilePicture": "http://www-scf.usc.edu/~csci201/images/jeffrey_miller.jpg",
       "x": 1,
       "y": 3,
       "size": 1

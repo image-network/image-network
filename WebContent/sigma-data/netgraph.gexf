@@ -9,7 +9,7 @@
       <attribute id="modularity_class" title="Modularity Class" type="integer"></attribute>
     </attributes>
     <nodes>
-      <node id="0" label="Myriel">
+      <node id="0" label="Myriel" streetname="'Myrbitch'">
         <attvalues>
           <attvalue for="modularity_class" value="0"></attvalue>
         </attvalues>
@@ -86,7 +86,7 @@
         <viz:size value="4.0"></viz:size>
         <viz:position x="-89.34107" y="234.56128" z="0.0"></viz:position>
       </node>
-      <node id="11" label="Valjean">
+      <node id="11" label="Valjean" streetname="monsieurmadeleine">
         <attvalues>
           <attvalue for="modularity_class" value="1"></attvalue>
         </attvalues>
