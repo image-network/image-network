@@ -1,4 +1,4 @@
-wolfgangToggled = false;
+wolfgangToggled = true;
 currentX = "0";
 currentY ="0";
 document.onmouseover = function(e)
@@ -63,6 +63,20 @@ function wolfgangInspect(e)
 		moveTo(getOffset(e).left, getOffset(e).top);
 	}
 
+	else if(idCandidate == "Profile Details")
+	{
+		document.getElementById("wolfgangText").innerHTML = 
+			"Click here for more about this profile!";
+		moveTo(getOffset(e).left, getOffset(e).top);
+	}
+
+	else if(idCandidate == "=")
+	{
+		document.getElementById("wolfgangText").innerHTML = 
+			"Click here to open the sidebar at any time!";
+		moveTo(getOffset(e).left - 1000, getOffset(e).top + 200);
+	}
+
 	else if(idCandidate == "View Profile Details")
 	{
 		document.getElementById("wolfgangText").innerHTML = 
@@ -82,6 +96,14 @@ function wolfgangInspect(e)
 		document.getElementById("wolfgangText").innerHTML = 
 			"You can click on this to open and close this menu!";
 		moveTo(getOffset(e).left, getOffset(e).top + 100);
+	}
+
+
+	else if(idCandidate == "Pokes")
+	{
+		document.getElementById("wolfgangText").innerHTML = 
+			"Let's go bother somebody!";
+		moveTo(getOffset(e).left - 700, getOffset(e).top + 250);
 	}
 
 }
