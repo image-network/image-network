@@ -141,11 +141,11 @@
 		</div>
 		<br />
 		!-->
-		<div id="uploadWidget" style="padding: 10px; width: auto; background-color: #222222; border-radius: 6px">
+		<div id="uploadWidget" class="ICWidget" style="width: auto">
 			<h2 class="buttonDivider" style="width: auto">Image Upload</h2>
 			<br />
 			<form name="uploadForm">
-				<input onchange="writePreview()" type="file" name="pic" accept="image/*" />
+				<input type="file" name="pic" accept="image/*" />
 				<input type="submit" />
 			</form>
 			<br />
@@ -158,8 +158,8 @@
 	<div id="rightblock"
 		style="position: absolute; top: 75px; bottom: 45px; right: 45px; left: 400px; text-align: left; line-height: 1">
 	
-		<div id="photoManagerWidget" style="padding: 10px; width: 100%; height: 100%; background-color: #222222; border-radius: 6px">
-			<h2 class="buttonDivider" style="width: auto">Photo Manager</h2>
+		<div id="photoManagerWidget" class="ICWidget" style="width: 100%; height: 100%">
+			<h2 class="buttonDivider" style="width: auto">My Images</h2>
 			<!-- APPEND IMAGE DATA HERE FROM THE DATABASE -->
 		</div>
 	</div>
