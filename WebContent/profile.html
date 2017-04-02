@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Image Network</title>
+		
+		<link rel="stylesheet" type="text/css" href="css/imagenetwork.css"/>
+</head>
+	</head>
+	<body>
+		<div id="main" style="color: #fff; text-align: center;">
+		
+		</div>
+		<script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+		<script>
+		  // Initialize Firebase
+		  var config = {
+		    apiKey: "AIzaSyBXwd0A6u5uWUHX9GxiT-TcwkAac_X-Wx4",
+		    authDomain: "image-network.firebaseapp.com",
+		    databaseURL: "https://image-network.firebaseio.com",
+		    storageBucket: "image-network.appspot.com",
+		    messagingSenderId: "268082674497"
+		  };
+		  firebase.initializeApp(config);
+		  
+	
+	      // Call initApp() upon the window loading
+	      window.onload = function() {
+	        loadProfileInfo();
+	      }
+		</script>
+		<script>
+			function loadProfileInfo() {
+				firebase.auth().onAuthStateChanged(function(user) {
+					if (user) {
+						// Populate profile info
+						var main = document.getElementById('main');
+	
+						var user = firebase.auth().currentUser;
+						if (user) {
+							var ref = firebase.database().ref('users/' + user.uid);
+							ref.once('value').then(function(snapshot) {
+								var fname = snapshot.child('fname').val();
+								var lname = snapshot.child('lname').val();
+								var username = snapshot.child('username').val();
+								var email = snapshot.child('email').val();
+								main.innerHTML = '<strong><h1>' + fname + ' ' + lname + '</h1></strong>' + 
+									'<br><span style="color: green;">' 
+									+ username + '</span><br>' + email;
+							}).catch(function(error) {
+	
+							});
+						}
+					}
+				});
+			}
+		</script>
+	</body>
+</html>

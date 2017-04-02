@@ -74,7 +74,7 @@
 					<td>
 				<table style="text-align: left">
 					<tr><td id="profile"></td></tr>
-					<tr><td><a href="login.html">Profile Details</a></td></tr>
+					<tr><td><a href="profile.html">Profile Details</a></td></tr>
 					<tr><td><a href="#" id="sign-out">Sign Out</a></td></tr>
 				</table>
 				</td>
@@ -88,7 +88,7 @@
 			<button class="animatedButton" style="width: 100%; text-align: left"
 				onclick="location.href = 'homepage.html'">EXPLORE</button>
 			<button class="animatedButton" style="width: 100%; text-align: left"
-				onclick="location.href = 'homepage.html'">USERS</button>
+				onclick="location.href = 'users.html'">USERS</button>
 			<button class="animatedButton" style="width: 100%; text-align: left"
 				onclick="location.href = 'homepage.html'">POKES</button>
 			<button class="animatedButton" style="width: 100%; text-align: left"
@@ -142,7 +142,7 @@
 					if (user) {
 						var ref = firebase.database().ref('users/' + user.uid);
 						ref.once('value').then(function(snapshot) {
-							var child = snapshot.child('email').val();
+							var child = snapshot.child('username').val();
 							profile.innerHTML = child;
 						}).catch(function(error){
 							// Error occurred

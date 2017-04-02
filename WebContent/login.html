@@ -11,6 +11,9 @@
 
 <!-- END SIGMA IMPORTS -->
 
+<!-- MARK: GOOGLE FONTS -->
+<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="css/imagenetwork.css"/>
 <title>Image Network</title>
@@ -45,14 +48,8 @@
 
 				</tr>
 				<tr>
-					<td style="color: #111">New User?</td>
+					<td><a id="create-account-link" href="signup.html">New User? Create an account</a></td>
 				</tr>
-				<tr>
-					<td style="padding: 5px;"><button id="signUp" class="animatedButton">SIGN
-							UP</button></td>
-
-				</tr>
-				
 			</table>
 		</div>
 		<div id='network-graph' 
@@ -60,13 +57,13 @@
 		
 	<div id="negativeSpace">
 		<h1 class="hoverableText"
-			style="opacity: 0; animation: fadeIn 1s ease-in 0.5s forwards;">A
+			style="opacity: 0; animation: fadeIn 1s ease-in 0.5s forwards; font-family: 'Muli', sans-serif;">A
 			place to spread your rarest Pepes.</h1>	<br />
 		<p class="hoverableText"
-			style="opacity: 0; animation: fadeIn 1s ease-in 2.5s forwards;">Discover
+			style="opacity: 0; animation: fadeIn 1s ease-in 2.5s forwards; font-family: 'Muli', sans-serif; font-size: 1.15em;">Discover
 			the world from the comfort of your computer. Browse landscapes and memories and submit your own to the network.</p>
 					<p class="hoverableText"
-			style="opacity: 0; animation: fadeIn 1s ease-in 4.5s forwards;">Contribute to the collective scrapbook of millions of users.</p> <br />	
+			style="opacity: 0; animation: fadeIn 1s ease-in 4.5s forwards; font-family: 'Muli', sans-serif; font-size: 1.15em;">Contribute to the collective scrapbook of millions of users.</p> <br />	
 					</div> <br />
 	<script>drawGraphStill('network-graph', 50, ((25*24) / 2), '#2fa87e', '#2fa87e', 1, 3)</script>
 	
@@ -91,10 +88,17 @@
           }
         });
       }());
+	  
+	  /**
+	   * Handles setting event listeners for login and sign up buttons
+	   */
+	  function initAppLogin() {
+	  	document.getElementById('login').addEventListener('click', toggleLogIn, false);
+	  } // END initApp()
 
       // Call initApp() upon the window loading
       window.onload = function() {
-        initApp();
+        initAppLogin();
       }
 	</script>
 	<script src = "js/auth.js"></script>

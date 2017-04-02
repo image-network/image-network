@@ -34,8 +34,12 @@ function toggleLogIn() {
  * Handles the sign up button press
  */
 function handleSignUp() {
+	var fname = document.getElementById('fname').value;
+	var lname = document.getElementById('lname').value;
+	var username = document.getElementById('username').value;
 	var email = document.getElementById('email').value;
 	var password = document.getElementById('password').value;
+	var repeatedPassword = document.getElementById('repeatedPassword').value;
 	
 	if (email.length < 4) {
 		alert('Please enter an email address.');
@@ -47,9 +51,20 @@ function handleSignUp() {
 		return;
 	}
 	
+	if (password != repeatedPassword) {
+		alert('Passwords do not match.');
+		return;
+	}
+	
 	firebase.auth().createUserWithEmailAndPassword(email, password).then(function(user) {
 		firebase.database().ref().child("users/" + user.uid).set({
+			fname: fname,
+			lname: lname,
+			username: username,
 			email: email,
+			images: {
+				0: "none"
+			},
 			uid: user.uid
 		});
 	}).catch(function(error) {
@@ -64,11 +79,3 @@ function handleSignUp() {
 		console.log(error);
 	});
 } // END handleSignUp()
-
-/**
- * Handles setting event listeners for login and sign up buttons
- */
-function initApp() {
-	document.getElementById('login').addEventListener('click', toggleLogIn, false);
-	document.getElementById('signUp').addEventListener('click', handleSignUp, false);
-} // END initApp()

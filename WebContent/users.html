@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Image Network</title>
+	</head>
+	<body>
+		<div id="main">
+			<div id="form" style="background-color: #fff; width: 200px; margin: 0 auto;">
+				<input id="username" type="text" name="username" placeholder="Username" />
+				<input id="search-submit" type="submit" value="Search"/>
+			</div>
+			<div id="result">
+				
+			</div>
+		</div>
+		<script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+		<script>
+		  // Initialize Firebase
+		  var config = {
+		    apiKey: "AIzaSyBXwd0A6u5uWUHX9GxiT-TcwkAac_X-Wx4",
+		    authDomain: "image-network.firebaseapp.com",
+		    databaseURL: "https://image-network.firebaseio.com",
+		    storageBucket: "image-network.appspot.com",
+		    messagingSenderId: "268082674497"
+		  };
+		  firebase.initializeApp(config);
+		  
+	
+	      // Call initApp() upon the window loading
+	      window.onload = function() {
+	    	  document.getElementById('search-submit').addEventListener('click', searchByUsername, false);
+	      }
+	      
+	      function searchByUsername() {
+	    	  var username = document.getElementById('username').value;
+	    	  var ref = firebase.database().ref();
+	    	  ref.child('users').orderByChild('username').equalTo(username).once('value').then(function(snapshot) {
+	    		  if (snapshot) {
+	    			  var outer = snapshot.val();
+	    			  var inner;
+	    			  for (var key in outer) {
+	    				  inner = outer[key];
+	    			  }
+	    			  var result = document.getElementById('result');
+	    			  /* console.log(inner); */
+	    			  result.innerHTML = inner.fname + ' ' + inner.lname + '<br>' + inner.username + '<br>' + inner.email;
+	    			  
+	    		  }
+	    	  }).catch(function(error) {
+	    		  
+	    	  });
+	      }
+		</script>
+	</body>
+</html>

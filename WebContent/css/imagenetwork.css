@@ -87,7 +87,7 @@ a:hover
 	background-color: #efefef;
 	table-layout: fixed;
 	width: 380px;
-	height: 520px;
+	height: 420px;
 	line-spacing: 1;
 }
 .textField:focus
@@ -107,6 +107,16 @@ a:hover
     border: 2px solid #d3d3d3;
     border-radius: 4px;
 }
+
+#create-account-link {
+	color: #4bb88b;
+	text-decoration: none;
+}
+
+#create-account-link:hover {
+	color: #188558;
+}
+
 .animatedButton
 {
   font-family: Arial;
