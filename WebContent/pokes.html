@@ -155,5 +155,81 @@
 			<div id='network-graph' 
 	style="opacity:0; z-index: -100; animation: fadeIn 1s ease-in 0s forwards;"></div>
 	<script>drawGraphStill('network-graph', 50, ((25*24) / 2), '#2fa87e', '#2fa87e', 1, 3)</script>
+			<script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyBXwd0A6u5uWUHX9GxiT-TcwkAac_X-Wx4",
+	    authDomain: "image-network.firebaseapp.com",
+	    databaseURL: "https://image-network.firebaseio.com",
+	    storageBucket: "image-network.appspot.com",
+	    messagingSenderId: "268082674497"
+	  };
+	  firebase.initializeApp(config);
+	  
+
+      // Call initApp() upon the window loading
+      window.onload = function() {
+    	  
+          //sigma.js button binder
+          if(mainSigma != null && document.getElementById("nodeDetails") != null)
+          {
+          mainSigma.bind('clickNode', function(e) {
+        	  selectNode(e.data.node.label);
+        	  document.getElementById("nodeDetails").style.animation = "scaleIn 0.1s ease-out forwards";
+        	  writeNodeToDiv(e, document.getElementById("nodeDetails"));
+          	}
+          );
+          mainSigma.bind('clickStage', function(e) {
+        	  if(document.getElementById("nodeDetails").style.animation != "")
+        	  document.getElementById("nodeDetails").style.animation = "scaleOut 0.1s ease-out forwards";
+          	}
+          );
+          
+          mainSigma.refresh();
+          }
+          
+        initHome();
+      }
+	</script>
+	<script>
+   		function handleLogOut() {
+   			var user = firebase.auth().currentUser;
+   			if (user) {
+   				// Sign out the user
+   				firebase.auth().signOut().then(function() {
+   					// Sign out successful
+   				}).catch(function() {
+   					// Error occurred
+   				});
+   			}
+   		}
+
+   		function initHome() {
+    		firebase.auth().onAuthStateChanged(function(user) {
+				if (user) {
+					// Populate username info
+					var profile = document.getElementById('profile');
+
+					// Get the current user
+					var user = firebase.auth().currentUser;
+					if (user) {
+						var ref = firebase.database().ref('users/' + user.uid);
+						ref.once('value').then(function(snapshot) {
+							var child = snapshot.child('email').val();
+							profile.innerHTML = child;
+						}).catch(function(error){
+							// Error occurred
+						});
+					}
+				} else {
+					// User is not signed in, segue to login page
+					window.location = 'login.html';
+				}
+			});
+
+			document.getElementById('sign-out').addEventListener('click', handleLogOut, false);
+		}
+   	</script>
 </body>
 </html>
