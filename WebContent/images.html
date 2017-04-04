@@ -34,7 +34,7 @@
 		<div id="database-subfill" style="background-color: #555555;">
 			<table	style="text-align: center; background-color: #555555; width: 100%; border-bottom: 1px solid grey;">
 				<tr>
-					<td><img src="images/default_profilepicture.png"
+					<td><img id="profile_pic" src="images/default_profilepicture.png"
 						style="padding: 10px; border-radius: 25px;" width=70 /></td>
 					<td>
 						<table style="text-align: left">
@@ -169,9 +169,50 @@
 		
 			  
 			  var uploader = document.getElementById('uploader');
-				var fileButton = document.getElementById('fileButton');
-				
-				
+			  var fileButton = document.getElementById('fileButton');
+			
+			  var img = document.getElementById("profile_pic");
+			  
+			  var currentUser;
+			  var userid;
+			  
+			  firebase.auth().onAuthStateChanged(function(user) {
+				  if (user) {
+					  currentUser = user;
+					  console.log(user);
+					  console.log(currentUser);
+					  userid = user.uid;
+					  
+						
+					  firebase.database().ref('/users/'+ userid + '/images/image0').once('value').then(function(snapshot){
+							var profilePic = snapshot.val();
+							
+							var storageRef = firebase.storage().ref(profilePic);
+							console.log(profilePic);
+					  
+							storageRef.getDownloadURL().then(function(url){
+						
+							  var xhr = new XMLHttpRequest();
+							  xhr.responseType = 'blob';
+							  xhr.onload = function(event) {
+							    var blob = xhr.response;
+							  };
+							  xhr.open('GET', url);
+							  xhr.send();
+								
+							  img.src = url;
+								
+							}).catch(function(error){
+								console.log(error);
+							});
+							
+					  });
+				  } else {
+				   
+				  }
+				});
+			  
+
 				fileButton.addEventListener('change', upload);
 				
 				function upload(e){
@@ -198,9 +239,9 @@
 						},
 						
 						function complete(){
-							var num = 0;
 							var user = firebase.auth().currentUser;
 							var userid = user.uid;
+							var num = 0;
 							
 							
 							firebase.database().ref('/users/'+ userid + '/images').once("value").then(function(snapshot){
@@ -215,11 +256,6 @@
 								updates['/users/' + userid + '/images/image' + num] = storageRef.fullPath;
 								firebase.database().ref().update(updates);
 							});
-
-							
-							
-							
-							
 						}
 					)			
 				}
