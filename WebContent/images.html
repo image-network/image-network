@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- START SIGMA IMPORTS -->
+<script src = "sigma-min/sigma.min.js"></script>
+<script src = "sigma-min/plugins/sigma.plugins.dragNodes.min.js"></script>
+<script src = "sigma-min/plugins/sigma.layout.forceAtlas2.min.js"></script>
+<script src = "sigma-min/plugins/sigma.plugins.animate.min.js"></script>
+<script src = "sigma-min/plugins/sigma.renderers.customEdgeShapes.min.js"></script>
+<script src = "sigma-helpers/sigmaDrawer.js"></script>
+
+<!-- END SIGMA IMPORTS -->
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/imagenetwork.css" />
+<title>Image Network</title>
+</head>
+<body>
+	<!-- Begin NavBar Module -->
+	<div id="headerContent"
+		style="overflow-y: hidden; padding-left: 2px; text-align: left; vertical-align: middle; animation: fadeInFromTop 0.1s forwards;">
+		<img src="images/logotentative.png" height=45px />
+
+		<button class="animatedButton" onclick="toggleNavBar()"
+			style="cursor: pointer; float: right; margin-right: 20px; background-color: inherit;"
+			height=45px>=</button>
+		<img src="images/spider_icon.png" onclick="toggleWolfgang();"
+			style="float: right; padding-right: 20px;" height=45px />
+
+	</div>
+	<div id="database-adjacent-reverse">
+
+		<h1 class="buttonDivider">Images</h1>
+		<div id="database-subfill" style="background-color: #555555;">
+			<table
+				style="text-align: center; background-color: #555555; width: 100%; border-bottom: 1px solid grey;">
+				<tr>
+					<td><img src="images/default_profilepicture.png"
+						style="padding: 10px; border-radius: 25px;" width=70 /></td>
+					<td>
+						<table style="text-align: left">
+							<tr>
+								<td id="dashboardProfile"></td>
+							</tr>
+							<tr>
+								<td><a href="profiledetails.html">Profile Details</a></td>
+							</tr>
+							<tr>
+								<td><a href="#" id="sign-out">Sign Out</a></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+
+
+			<p class="buttonDivider" style="text-align: left">MY WEB</p>
+			<button class="animatedButton" style="width: 100%; text-align: left"
+				onclick="location.href = 'dashboard.html'">DASHBOARD</button>
+			<button class="animatedButton" style="width: 100%; text-align: left"
+				onclick="location.href = 'images.html'">IMAGES</button>
+			<button class="animatedButton" style="width: 100%; text-align: left"
+				onclick="location.href = 'explore.html'">EXPLORE</button>
+			<p class="buttonDivider" style="text-align: left">SOCIAL</p>
+			<button class="animatedButton" style="width: 100%; text-align: left"
+				onclick="location.href = 'users.html'">USERS</button>
+			<button class="animatedButton" style="width: 100%; text-align: left"
+				onclick="location.href = 'pokes.html'">POKES</button>
+			<button class="animatedButton" style="width: 100%; text-align: left"
+				onclick="location.href = 'friendsearch.html'">FRIEND SEARCH</button>
+			<p class="buttonDivider" style="text-align: left">SITE</p>
+			<button class="animatedButton" style="width: 100%; text-align: left"
+				onclick="location.href = 'contact.html'">CONTACT</button>
+			<button class="animatedButton" style="width: 100%; text-align: left"
+				onclick="location.href = 'contact.html'">SITE POLICY</button>
+
+			<script type="text/javascript">
+				sideToggled = true;
+				document.getElementById("database-adjacent-reverse").style.animation = "offscreenLeft 0.1s forwards";
+				function toggleNavBar() {
+					if (!sideToggled)
+
+						document.getElementById("database-adjacent-reverse").style.animation = "offscreenLeft 0.1s forwards";
+					else
+						document.getElementById("database-adjacent-reverse").style.animation = "backToScreenLeft 0.1s forwards";
+					sideToggled = !sideToggled;
+				}
+
+				function mouseOverNavBar() {
+					if (document.getElementById("database-adjacent-reverse").style.animation === "offscreenLeft 0.1s forwards")
+						document.getElementById("database-adjacent-reverse").style.animation = "backToScreenLeft 0.1s forwards";
+					sideToggled = false;
+				}
+			</script>
+			<button class="symbolButton" id="sideToggle" onclick="toggleNavBar()"
+				onmouseover="mouseOverNavBar()"
+				style="position: absolute; left: 100%; bottom: 0; width: 10px; padding: 0; height: 100%;">|||</button>
+		</div>
+	</div>
+
+
+
+	<!--  Wolfgang Module -->
+	<script src="js/wolfgang.js"></script>
+	<div id="wolfgang"
+		style="display: none; position: absolute; top: 500px; left: 500px; z-index: 100">
+		<p
+			style="position: absolute; left: 100%; bottom: 75%; transform: rotate(45deg); background-color: #ffffff; border-radius: 25px;"
+			width=200>|</p>
+		<div id="wolfgangSpeechBubble"
+			style="position: absolute; left: 100%; bottom: 100%; width: 400px;">
+			<p id="wolfgangText"
+				style="background-color: #ffffff; color: #000000; text-align: center; padding: 30px; border-radius: 55px;">Howdy!
+				I'm Wolfgang! If you can't find your way around, you can find me in
+				the upper right corner of the screen!</p>
+			<button class="animatedButton" onclick="toggleWolfgang()"
+				style="position: absolute; bottom: 75%; left: 95%; border-radius: 40px; padding: 5px; font-size: 10px; background-color: #ff0000">X</button>
+		</div>
+		<img src="images/spider.png" onclick="generateSpideryWisdom()"
+			width=100 />
+	</div>
+	<!-- END Wolfgang Module -->
+
+	<!-- End NavBar Module -->
+
+
+	<div id="coverbannerblock"
+		style="z-index: -1; left: 0; position: absolute; padding-top: 75px; padding-left: 45px; line-height: 1;">
+		<h1>Images</h1>
+		<p>Manage your uploaded memories.</p>
+		
+		<!--
+		<div id="uploadWidget" style="padding: 10px; width: 100%; background-color: #222222; border-radius: 6px">
+			<h2 class="buttonDivider" style="width: auto">Image Upload</h2>
+			<br />
+			<form>
+				<input type="file" name="pic" accept="image/*" /><input type="submit" />
+			</form>
+			<br />
+			<br />
+		</div>
+		<br />
+		!-->
+		<div id="uploadWidget" style="padding: 10px; width: auto; background-color: #222222; border-radius: 6px">
+			<h2 class="buttonDivider" style="width: auto">Image Upload</h2>
+			<br />
+			<form name="uploadForm">
+				<input onchange="writePreview()" type="file" name="pic" accept="image/*" />
+				<input type="submit" />
+			</form>
+			<br />
+			<br />
+		</div>
+		<br />
+		<br />
+		
+	</div>
+	<div id="rightblock"
+		style="position: absolute; top: 75px; bottom: 45px; right: 45px; left: 400px; text-align: left; line-height: 1">
+	
+		<div id="photoManagerWidget" style="padding: 10px; width: 100%; height: 100%; background-color: #222222; border-radius: 6px">
+			<h2 class="buttonDivider" style="width: auto">Photo Manager</h2>
+			<!-- APPEND IMAGE DATA HERE FROM THE DATABASE -->
+		</div>
+	</div>
+			<div id='network-graph' 
+	style="opacity:0; z-index: -100; animation: fadeIn 1s ease-in 0s forwards;"></div>
+	<script>drawGraphStill('network-graph', 50, ((25*24) / 2), '#2fa87e', '#2fa87e', 1, 3)</script>
+</body>
+</html>

@@ -31,6 +31,7 @@ function drawRandomGraph(divId, nodeCount, edgeCount, nodeColor, edgeColor, node
 	mainColor = edgeColor;
 
 i=0;
+defaultColor = edgeColor;
 masterNodeCount = N;
 var jL = 0;
 
@@ -148,6 +149,7 @@ function drawGraphStill(divId, nodeCount, edgeCount, nodeColor, edgeColor, nodeS
     };
 	mainColor = edgeColor;
 i=0;
+defaultColor = edgeColor;
 masterNodeCount = N;
 var jL = 0;
 
@@ -250,11 +252,11 @@ function drawFromJSON(filepath,divId, nodeColor, edgeColor, nodeSizeMin, nodeSiz
 {
 	mainColor = edgeColor;
 	// Instantiate sigma:
+	defaultColor = edgeColor;
 	mainSigma = new sigma({
 		  settings:{
 			  minNodeSize: nodeSizeMin, 
-			  maxNodeSize: nodeSizeMax, 
-			  mouseEnabled: false,
+			  maxNodeSize: nodeSizeMax,
 			  scalingMode: 'outside',
 			  defaultNodeColor: nodeColor
 			  }
@@ -277,6 +279,9 @@ function drawFromJSON(filepath,divId, nodeColor, edgeColor, nodeSizeMin, nodeSiz
 		sigma.parsers.json(filepath,mainSigma, function(s)
 				{
 					s.refresh();
+					
+					s.startForceAtlas2({worker: true, barnesHutOptimize: false, slowDown: 10.0, edgeWeightInfluence: 0.0, iterationsPerRender: 1000});
+					setTimeout(function(){s.stopForceAtlas2();}, 100);
 				});
 		
 }
@@ -300,6 +305,7 @@ function drawFromGEXF(filepath,divId, nodeColor, edgeColor, nodeSizeMin, nodeSiz
 {
 	mainColor = edgeColor;
 	// Instantiate sigma:
+	defaultColor = edgeColor;
 	mainSigma = new sigma({
 		  settings:{
 			  minNodeSize: nodeSizeMin, 
@@ -329,10 +335,10 @@ function drawFromGEXF(filepath,divId, nodeColor, edgeColor, nodeSizeMin, nodeSiz
 		sigma.parsers.gexf(filepath,mainSigma, function(s)
 				{
 					s.refresh();
-					/*
-					s.startForceAtlas2({worker: true, barnesHutOptimize: false, slowDown: 10.0, edgeWeightInfluence: 0.0});
-					setTimeout(function(){s.stopForceAtlas2();}, 5000);
-					*/
+					
+					s.startForceAtlas2({worker: true, barnesHutOptimize: false, slowDown: 10.0, edgeWeightInfluence: 0.0, iterationsPerRender: 1000});
+					setTimeout(function(){s.stopForceAtlas2();}, 100);
+					
 				});
 
 }
@@ -440,16 +446,18 @@ function findNodeId(nodeId)
 
 function selectNode(nodeName)
 {
+	if(findNode(conductorName) != null)
 	findNode(conductorName).color = mainColor;
+	
 	var node = findNode(nodeName);
 	if(node == undefined) return;
 
 	if(mainCamera == undefined) return;
 	sigma.misc.animation.camera (mainCamera,
 			{
-				x: node[mainCamera.readPrefix+"x"],
+				x: node[mainCamera.readPrefix+"x"] - 150,
 				y: node[mainCamera.readPrefix+"y"],
-				ratio: 0.3
+				ratio: 0.7
 			}, 
 			{duration: 1000});
 	
@@ -459,13 +467,35 @@ function selectNode(nodeName)
 	
 	mainSigma.refresh();
 }
-setTimeout(function(){selectNode(conductorName)},100);
-
-window.onload = function()
+/**Fetches a node, parses it given an assumed paradigm, and loads it to the specified div **/
+function writeNodeToDiv(eventNode, container)
 {
-mainSigma.bind('clickNode', function(e) {selectNode(e.data.node.label)});
-mainSigma.refresh();
+	container.setAttribute("class", "loginForm");;
+	buffer = "";
+	
+	buffer += "<h1 class='buttonDivider' >" + eventNode.data.node.fname + " " + eventNode.data.node.lname + "</h1>";
+	
+	buffer += "<table style='text-align: left; width: 100%'><tr><td>"
+	buffer += "<img src="+eventNode.data.node.profilePicture+" style='border-radius:16px' width=100 height=100/> <br />";
+	buffer += "</td><td>"
+	buffer += "<button class='animatedButton' style='width: 100%' >View Profile Details</button>" +
+			"<br /> " +
+			"<button class='animatedButton' style='width: 100%' >Connect</button>"
+	buffer += "</td></tr></table>"
+
+	buffer += "<h1 class='buttonDivider' > Status </h1>"
+	buffer += "<p style='font-style: italic; color: #cccccc;'>" + eventNode.data.node.status + "</p>";
+	buffer += "<h1 class='buttonDivider' > Recent Photos </h1>"
+	if(eventNode.data.node.images != undefined)
+	{
+	buffer +="<img src="+eventNode.data.node.images.Picture1+" style='border-radius:6px' width=50 height=50/> ";
+	buffer += "<img src="+eventNode.data.node.images.Picture2+" style='border-radius:6px' width=50 height=50/> ";
+	buffer += "<img src="+eventNode.data.node.images.Picture3+" style='border-radius:6px' width=50 height=50/> ";
+	}
+	container.innerHTML = buffer;
+	
 }
+setTimeout(function(){selectNode(conductorName)},100);
 /*
 sigma.classes.graph.addMethod('neighbors', function(nodeId) {
     var k,

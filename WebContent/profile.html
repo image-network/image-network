@@ -9,7 +9,9 @@
 	</head>
 	<body>
 		<div id="main" style="color: #fff; text-align: center;">
-		
+			<div id="name"></div>
+			<div id="username"></div>
+			<div id="email"></div>
 		</div>
 		<script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
 		<script>
@@ -34,7 +36,10 @@
 				firebase.auth().onAuthStateChanged(function(user) {
 					if (user) {
 						// Populate profile info
-						var main = document.getElementById('main');
+						/* var main = document.getElementById('main'); */
+						var nameDiv = document.getElementById('name');
+						var usernameDiv = document.getElementById('username');
+						var emailDiv = document.getElementById('email');
 	
 						var user = firebase.auth().currentUser;
 						if (user) {
@@ -44,9 +49,10 @@
 								var lname = snapshot.child('lname').val();
 								var username = snapshot.child('username').val();
 								var email = snapshot.child('email').val();
-								main.innerHTML = '<strong><h1>' + fname + ' ' + lname + '</h1></strong>' + 
-									'<br><span style="color: green;">' 
-									+ username + '</span><br>' + email;
+								nameDiv.innerHTML = '<strong><h1>' + fname + ' ' + lname + '</h1></strong>';
+								usernameDiv.innerHTML = '<span style="color: green;">' 
+									+ username + '</span>';
+								emailDiv.innerHTML = email;
 							}).catch(function(error) {
 	
 							});

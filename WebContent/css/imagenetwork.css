@@ -14,6 +14,18 @@ a:hover
 {
 	color: #1fa86e;
 }
+#nodeDetails
+{
+	text-align: left;
+	background-color: #444444;
+	color: #ffffff;
+	padding: 16px;
+	border-radius:2px;
+	table-layout: fixed;
+	width: 380px;
+	height: 520px;
+	line-spacing: 1;
+}
 #headerContent
 {
    position: fixed;
@@ -21,7 +33,7 @@ a:hover
    left: 0;
    padding-left:20px;
    width: 100%;
-   height:10%;
+   height:45px;
    background-color:#1fa86e;
 }
 
@@ -36,6 +48,7 @@ a:hover
    animation: fadeInSlight 3s ease-in forwards;
    background-color: #001100;
    background-image: url(../images/generic_lake.jpg);
+   z-index: -100;
 }
 #network-graph
 {
@@ -49,16 +62,33 @@ a:hover
 }
 #negativeSpace
 {
+	z-index: -1;
 	position: fixed;
 	left: 5%;
 	right: 450px;
-	top: 10%;
+	top: 45px;
+}
+#graph-navigation-bar
+{
+	overflow: hidden;
+	right: 0;
+	float: left;
+	top:10%;
+	height: 50px;
+	background-color: #444444;
+	animation: fadeIn 1s forwards;
+	text-align: left;
+	
+}
+.buttonholder
+{
+	padding: 20px;
 }
 #negativeSpace-reverse
 {
 	position: fixed;
 	right: 2%;
-	top: 10%;
+	top: 45px;
 	text-align: center;
 }
 #titleHeader
@@ -119,6 +149,7 @@ a:hover
 
 .animatedButton
 {
+  overflow-x: hidden;
   font-family: Arial;
   color: #ffffff;
   font-size: 20px;
@@ -126,6 +157,7 @@ a:hover
   padding: 10px 20px 10px 20px;
   text-decoration: none;
   border: 0;
+  cursor: pointer;
   border-radius: 4px;
   
 	animation-duration: 0.1s;
@@ -133,6 +165,38 @@ a:hover
 	animation-timing-function: ease;
 	animation-name: restoreScale;
 }
+
+.symbolButton
+{
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 10px;
+  background: #444444;
+  padding: 0;
+  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+  border-radius: 0px;
+  border-left: 0.25px solid grey;
+}
+
+
+
+.buttonDivider
+{
+  font-family: Arial;
+  color: #bbbbbb;
+  font-size: 20px;
+  background: #555555;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  border-bottom: 1px solid grey;
+  border-top: 1px solid grey;
+  font-style: bold;
+  margin: 0;
+  
+}
+
 .animatedButton:focus
 {
 	outline: none;
@@ -183,6 +247,7 @@ opacity: 1;
 transform: translateY(-150px);
 }
 }
+
 @keyframes fadeInFromTop
 {
 	0%{opacity: 0; transform: translateY(-25px);}
@@ -192,6 +257,23 @@ transform: translateY(-150px);
 {
 	0%{opacity: 0;}
 	100%{opacity: 1;}
+}
+
+@keyframes scaleIn
+{
+	0%{transform: scale(0);}
+	100%{transform: scale(1);}
+}
+
+@keyframes scaleOut
+{
+	0%{transform: scale(1);}
+	100%{transform: scale(0);}
+}
+@keyframes fadeOut
+{
+	0%{opacity: 1;}
+	100%{opacity: 0;}
 }
 @keyframes fadeInFromRight
 {
@@ -220,14 +302,20 @@ transform: translateY(-150px);
 	0%{transform: translateX(1000%);}
 	100%{transform: translateX(0);}
 }
+@keyframes offscreenLeft
+{
+	0%{transform: translateX(0);}
+	100%{transform: translateX(-100%);}
+}
+@keyframes backToScreenLeft
+{
+	0%{transform: translateX(-100%);}
+	100%{transform: translateX(0);}
+}
 #database-graph
 {
-	user-select: none;
-	position: fixed;
-	box-shadow: 0px -2px 2px rgba(34,34,34,0.6);
 	right: 0;
-	left: 300px;
-	top: 10%;
+	top: 45px;
 	bottom: 0%;
 	background-color:#111111;
 	animation: fadeIn 2s;
@@ -237,20 +325,22 @@ transform: translateY(-150px);
 	position: fixed;
 	width: 300px;
 	right: 0;
-	top: 10%;
+	top: 45px;
 	bottom: 0;
 	line-spacing: 1;
 	background-color: #111111;
 }
 #database-adjacent-reverse
 {
+	transform: translateX(-100%);
 	position: fixed;
 	width: 300px;
 	left: 0;
-	top: 10%;
+	top: 45px;
 	bottom: 0;
 	line-spacing: 1;
 	background-color: #444444;
+	z-index: 100;
 }
 #database-subfill
 {

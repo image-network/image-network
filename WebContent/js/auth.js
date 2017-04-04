@@ -60,11 +60,9 @@ function handleSignUp() {
 		firebase.database().ref().child("users/" + user.uid).set({
 			fname: fname,
 			lname: lname,
+			fullname: fname + ' ' + lname,
 			username: username,
 			email: email,
-			images: {
-				0: "none"
-			},
 			uid: user.uid
 		});
 	}).catch(function(error) {
