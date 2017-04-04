@@ -1,23 +1,85 @@
 @CHARSET "UTF-8";
+/*
+	IMAGE NETWORK ROOT CSS FILE
+	
+	
+	**ANIMATION DOCUMENTATION
+	Usage: In JS, docElement.style.animation = "animation"
+	Format: "<animation-name> <animation-duration> ease-out forwards"
+	
+	**ANIMATION NAMES
+	scaleIn - animates the object from scale(0) to scale(1)
+	scaleOut - animates the object from scale(1) to scale(0)
+	fadeInFromTop - animates the object from opacity(0) to opacity(1) with vertical offset
+	hoverScale - animates the object from scale(1) to scale(1.01) (for buttons)
+	restoreScale - animates the object from scale(1.01) to scale(1) (for buttons)
+	flyInLeft - animates the object in from right off-screen to its current position
+	offScreenLeft - animates the object from its current position to left adjacent off-screen
+	backToScreenLeft - animates the object from left off-screen to its current position
+	
+	***BUTTON CLASS DOCUMENTATION***
+	Usage: Assign class to your button, div or input type.
+	NOTE: does not format properly for file input.
+	
+	*To override the button color with the standard background,inherit the background-color
+	**BUTTON CLASSES:
+		animatedButton - standard gray button with moderate scaling
+		buttonDivider - greyed out button - use to logically divide buttons
+	**
+	
+	***FORMATTING IDs***
+	Usage: Assorted divs used to format data on screen. 
+	Best not to override the formatting on these.
+	
+	**IDs:
+		database-adjacent - absolute region for sidebar formatting
+		database-subfill - fill region for sidebar buttons
+		database-adjacent-reverse - fill region for 
+		negativeSpace - open space on login.html for splash text
+		negativeSpace-reverse - reversed orientation
+		image-backing - creates a background-image overlay.
+		loginForm, absoluteWrapper - login formatting
+	**
+	
+	**SIGMA IDs
+		nodeDetails - popup menu that displays a node's data
+		network-graph - maps the sigma graph to the background
+		database-graph - maps the sigma graph to a relative size
+		graph-navigation-bar - searchbar for the graph navigation region
+	
+	
+*/
+:root
+{
+	--main-color: #000000;
+	--text-color: #ffffff;
+	--hyperlink-color: #1fa86e;
+	--unclickable-color: #bbbbbb;
+	--header-bar-color: #1fa86e;
+	--button-color: #444444;
+	--button-hover-color: #333333;
+	--button-divider-color: #555555;
+	--widget-background-color: #444444;
+}
 body
 {
-	background-color:#000000;
-	color: #ffffff;
+	background-color:var(--main-color);
+	color: var(--text-color);
 	font-family: "Arial", Arial, sans-serif;
 }
 a
 {
-	color: #ffffff;
+	color: var(--text-color);
 	text-decoration: none;
 }
 a:hover
 {
-	color: #1fa86e;
+	color: var(--hyperlink-color);
 }
 #nodeDetails
 {
 	text-align: left;
-	background-color: #444444;
+	background-color: var(--widget-background-color);
 	color: #ffffff;
 	padding: 16px;
 	border-radius:2px;
@@ -34,7 +96,7 @@ a:hover
    padding-left:20px;
    width: 100%;
    height:45px;
-   background-color:#1fa86e;
+   background-color:var(--header-bar-color);
 }
 
 #image-backing
@@ -55,7 +117,7 @@ a:hover
 	position: absolute;
 	top: 0;
 	left: 0;
-	z-index: -1;
+	z-index: -1000;
 	width: 100%;
 	height: 100%;
 	opacity: 0.2;
@@ -75,7 +137,7 @@ a:hover
 	float: left;
 	top:10%;
 	height: 50px;
-	background-color: #444444;
+	background-color: var(--widget-background-color);
 	animation: fadeIn 1s forwards;
 	text-align: left;
 	
@@ -153,7 +215,7 @@ a:hover
   font-family: Arial;
   color: #ffffff;
   font-size: 20px;
-  background: #444444;
+  background-color: var(--button-color);
   padding: 10px 20px 10px 20px;
   text-decoration: none;
   border: 0;
@@ -171,7 +233,7 @@ a:hover
   font-family: Arial;
   color: #ffffff;
   font-size: 10px;
-  background: #444444;
+  background: var(--button-color);
   padding: 0;
   text-decoration: none;
   border: 0;
@@ -187,7 +249,7 @@ a:hover
   font-family: Arial;
   color: #bbbbbb;
   font-size: 20px;
-  background: #555555;
+  background: var(--button-divider-color);
   padding: 10px 20px 10px 20px;
   text-decoration: none;
   border-bottom: 1px solid grey;
@@ -207,7 +269,7 @@ a:hover
 	animation-fill-mode: both;
 	animation-timing-function: ease;
 	animation-name: hoverScale;
-    background: #333333;
+    background: var(--button-hover-color);;
 }
 .hoverableText:focus
 {
@@ -320,16 +382,6 @@ transform: translateY(-150px);
 	background-color:#111111;
 	animation: fadeIn 2s;
 }
-#database-adjacent
-{
-	position: fixed;
-	width: 300px;
-	right: 0;
-	top: 45px;
-	bottom: 0;
-	line-spacing: 1;
-	background-color: #111111;
-}
 #database-adjacent-reverse
 {
 	transform: translateX(-100%);
@@ -339,7 +391,7 @@ transform: translateY(-150px);
 	top: 45px;
 	bottom: 0;
 	line-spacing: 1;
-	background-color: #444444;
+	background-color: var(--button-color);
 	z-index: 100;
 }
 #database-subfill
@@ -347,4 +399,11 @@ transform: translateY(-150px);
 	width: 100%;
 	margin: 0;
 	line-spacing: 1;
+}
+.ICWidget
+{
+	padding: 10px;
+	width: 300px;
+	background-color: #222222;
+	border-radius: 6px
 }

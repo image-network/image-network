@@ -30,9 +30,9 @@
 	</div>
 	<div id="database-adjacent-reverse">
 
-		<h1 class="buttonDivider">Images</h1>
+		<h1 class="buttonDivider">Site Policy</h1>
 		<div id="database-subfill" style="background-color: #555555;">
-			<table>
+			<table
 				style="text-align: center; background-color: #555555; width: 100%; border-bottom: 1px solid grey;">
 				<tr>
 					<td><img src="images/default_profilepicture.png"
@@ -52,7 +52,7 @@
 					</td>
 				</tr>
 			</table>
-			
+
 
 			<p class="buttonDivider" style="text-align: left">MY WEB</p>
 			<button class="animatedButton" style="width: 100%; text-align: left"
@@ -126,8 +126,8 @@
 
 	<div id="coverbannerblock"
 		style="z-index: -1; left: 0; position: absolute; padding-top: 75px; padding-left: 45px; line-height: 1;">
-		<h1>Images</h1>
-		<p>Manage your uploaded memories.</p>
+		<h1>Contact Information & Site Policy</h1>
+		<p><br /></p>
 		
 		<!--
 		<div id="uploadWidget" style="padding: 10px; width: 100%; background-color: #222222; border-radius: 6px">
@@ -141,103 +141,28 @@
 		</div>
 		<br />
 		!-->
-		<div id="uploadWidget" class="ICWidget" style="width: auto">
-			<h2 class="buttonDivider" style="width: auto">Image Upload</h2>
-			<br />
-			<!-- <form name="uploadForm"> -->
-				<progress id="uploader" value="0" max="100" id="uploader">0%</progress>
-				<br />
-				<input id="fileButton" type="file" name="pic" accept="image/*" />
-			<!-- 	<input type="submit" />
-			</form> -->
-			<br />
-			<br />
-		</div>
-		<br />
-		<br />
-		<script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
-		<script>
-			//initialize firebase
-			 var config = {
-			    apiKey: "AIzaSyBXwd0A6u5uWUHX9GxiT-TcwkAac_X-Wx4",
-			    authDomain: "image-network.firebaseapp.com",
-			    databaseURL: "https://image-network.firebaseio.com",
-			    storageBucket: "image-network.appspot.com",
-			    messagingSenderId: "268082674497"
-			  };
-	
-			 firebase.initializeApp(config);
-		
-			  
-			  var uploader = document.getElementById('uploader');
-				var fileButton = document.getElementById('fileButton');
-				
-				
-				fileButton.addEventListener('change', upload);
-				
-				function upload(e){
-					//get file
-					var file = e.target.files[0];
-					//create a storage ref
-					var storageRef = firebase.storage().ref('user_uploads/' + file.name);
-					
-					console.log(file.name);
-					
-					//Upload file
-					var task = storageRef.put(file);
-					//update progress bar
-					
-					task.on('state_changed',
-						function progress(snapshot){
-							var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-							uploader.value = percentage;
-						
-						},
-						
-						function error(err){
-							console.log(err);
-						},
-						
-						function complete(){
-							var num = 0;
-							var user = firebase.auth().currentUser;
-							var userid = user.uid;
-							
-							
-							firebase.database().ref('/users/'+ userid + '/images').once("value").then(function(snapshot){
-								console.log(snapshot.val());
-								num = snapshot.numChildren();
-								console.log(num);
-								console.log(snapshot.numChildren());
-								
-								var updates = {};
-								var path = '/users/' + userid + '/images/image' + num;
-								console.log(num);
-								updates['/users/' + userid + '/images/image' + num] = storageRef.fullPath;
-								firebase.database().ref().update(updates);
-							});
+		<div id="spWidget" class="ICWidget" style="position: absolute; width: 400px; height: 400px; overflow-y: scroll">
+			<h2 class="buttonDivider" style="width: auto">Site Guidelines</h2>
+			<p>Spicy jalapeno bacon ipsum dolor amet turducken pancetta burgdoggen cupim jerky landjaeger. Drumstick sirloin meatball shank capicola pig tongue prosciutto venison. Swine pancetta short ribs, andouille flank turducken leberkas pastrami brisket t-bone frankfurter burgdoggen tenderloin. Jowl pancetta pork loin, beef ham t-bone tail chicken rump doner frankfurter capicola short loin tri-tip. Salami sausage prosciutto, turducken pork loin picanha landjaeger ribeye jerky pancetta corned beef fatback spare ribs.
 
-							
-							
-							
-							
-						}
-					)			
-				}
-			  
-			  
-			
-			
-			</script>
+Cow turkey jowl doner prosciutto corned beef strip steak venison. Filet mignon t-bone chuck chicken picanha pork, venison ham hamburger landjaeger meatloaf. T-bone jowl kevin flank, short loin shoulder corned beef biltong tongue. Flank shankle capicola ham pig pancetta chicken shank t-bone turkey. Biltong flank sausage prosciutto, fatback sirloin short loin short ribs jerky meatball. Short ribs pork hamburger, drumstick porchetta meatball andouille flank swine tri-tip turkey rump turducken meatloaf tail. Meatloaf chuck burgdoggen, pork loin shank ham drumstick hamburger beef ribs sirloin.
+
+Jerky ham hock cow turducken shank boudin corned beef burgdoggen porchetta tongue hamburger andouille rump swine. Bacon spare ribs swine pig kielbasa. Strip steak andouille chicken kielbasa. Pancetta hamburger meatloaf jowl shoulder bresaola biltong rump ham spare ribs swine sausage. Pancetta rump brisket shank, kielbasa swine drumstick spare ribs frankfurter pig pork loin prosciutto. Sirloin spare ribs jowl pig meatloaf picanha tri-tip shank ham andouille frankfurter. Chicken pork chop turducken sausage tri-tip corned beef cow leberkas swine fatback kevin pork belly.
+
+Kielbasa tenderloin biltong chuck. Picanha hamburger kielbasa alcatra pork belly cupim flank sausage shank pork chop ham hock ground round. Burgdoggen bresaola short ribs, turducken ham hock pork chop capicola sirloin prosciutto. Pancetta tail capicola short ribs spare ribs pig corned beef picanha meatball. Short loin ham pork chop ham hock, kielbasa chicken burgdoggen swine tenderloin shoulder. Hamburger corned beef tail, pancetta chuck shoulder rump pork chop venison meatball landjaeger jerky.
+
+Pork loin picanha chuck shankle shank cupim. Alcatra porchetta kevin, pork chop ribeye sausage leberkas. Strip steak burgdoggen pig filet mignon leberkas pork chop corned beef landjaeger biltong kielbasa pork prosciutto flank porchetta. Meatball pancetta frankfurter beef.</p>
+			<!-- APPEND POKABLE FRIENDS HERE -->
+		</div>
 		
-		
-	</div>
-	<div id="rightblock"
-		style="position: absolute; top: 75px; bottom: 45px; right: 45px; left: 400px; text-align: left; line-height: 1">
-	
-		<div id="photoManagerWidget" class="ICWidget" style="width: 100%; height: 100%">
-			<h2 class="buttonDivider" style="width: auto">My Images</h2>
-			<!-- APPEND IMAGE DATA HERE FROM THE DATABASE -->
+		<div id="ctWidget" class="ICWidget" style="position: absolute; left: 500px; width: 400px; height: 400px">
+			<h2 class="buttonDivider" style="width: auto">Contact Us</h2>
+			<p>The team: <br /><br />
+			Richard Ju - richarlj@usc.edu<br />UI, sigma.js<br /><br/>
+			Kevin Nguyen - kevinlng@usc.edu<br />Firebase & Database Management<br /><br/>
+			Sriram Somasundaram - sriramso@usc.edu<br />Image Recognition, JSON generation<br /><br/>
+			Ethan Chang - ethanc@usc.edu<br />Database Architecture, General Backend<br /><br/>
+			</p>
 		</div>
 	</div>
 			<div id='network-graph' 

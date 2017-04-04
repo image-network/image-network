@@ -30,9 +30,9 @@
 	</div>
 	<div id="database-adjacent-reverse">
 
-		<h1 class="buttonDivider">Images</h1>
+		<h1 class="buttonDivider">Pokes</h1>
 		<div id="database-subfill" style="background-color: #555555;">
-			<table>
+			<table
 				style="text-align: center; background-color: #555555; width: 100%; border-bottom: 1px solid grey;">
 				<tr>
 					<td><img src="images/default_profilepicture.png"
@@ -52,7 +52,7 @@
 					</td>
 				</tr>
 			</table>
-			
+
 
 			<p class="buttonDivider" style="text-align: left">MY WEB</p>
 			<button class="animatedButton" style="width: 100%; text-align: left"
@@ -126,8 +126,8 @@
 
 	<div id="coverbannerblock"
 		style="z-index: -1; left: 0; position: absolute; padding-top: 75px; padding-left: 45px; line-height: 1;">
-		<h1>Images</h1>
-		<p>Manage your uploaded memories.</p>
+		<h1>Pokes</h1>
+		<p>Bother people here!</p>
 		
 		<!--
 		<div id="uploadWidget" style="padding: 10px; width: 100%; background-color: #222222; border-radius: 6px">
@@ -141,104 +141,16 @@
 		</div>
 		<br />
 		!-->
-		<div id="uploadWidget" class="ICWidget" style="width: auto">
-			<h2 class="buttonDivider" style="width: auto">Image Upload</h2>
-			<br />
-			<!-- <form name="uploadForm"> -->
-				<progress id="uploader" value="0" max="100" id="uploader">0%</progress>
-				<br />
-				<input id="fileButton" type="file" name="pic" accept="image/*" />
-			<!-- 	<input type="submit" />
-			</form> -->
-			<br />
-			<br />
+		<div id="pokeWidget" class="ICWidget" style="position: absolute; width: 700px; height: 400px; overflow-y: scroll">
+			<h2 class="buttonDivider" style="width: auto">Thwips</h2>
+			<!-- APPEND POKABLE FRIENDS HERE -->
 		</div>
-		<br />
-		<br />
-		<script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
-		<script>
-			//initialize firebase
-			 var config = {
-			    apiKey: "AIzaSyBXwd0A6u5uWUHX9GxiT-TcwkAac_X-Wx4",
-			    authDomain: "image-network.firebaseapp.com",
-			    databaseURL: "https://image-network.firebaseio.com",
-			    storageBucket: "image-network.appspot.com",
-			    messagingSenderId: "268082674497"
-			  };
-	
-			 firebase.initializeApp(config);
 		
-			  
-			  var uploader = document.getElementById('uploader');
-				var fileButton = document.getElementById('fileButton');
-				
-				
-				fileButton.addEventListener('change', upload);
-				
-				function upload(e){
-					//get file
-					var file = e.target.files[0];
-					//create a storage ref
-					var storageRef = firebase.storage().ref('user_uploads/' + file.name);
-					
-					console.log(file.name);
-					
-					//Upload file
-					var task = storageRef.put(file);
-					//update progress bar
-					
-					task.on('state_changed',
-						function progress(snapshot){
-							var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-							uploader.value = percentage;
-						
-						},
-						
-						function error(err){
-							console.log(err);
-						},
-						
-						function complete(){
-							var num = 0;
-							var user = firebase.auth().currentUser;
-							var userid = user.uid;
-							
-							
-							firebase.database().ref('/users/'+ userid + '/images').once("value").then(function(snapshot){
-								console.log(snapshot.val());
-								num = snapshot.numChildren();
-								console.log(num);
-								console.log(snapshot.numChildren());
-								
-								var updates = {};
-								var path = '/users/' + userid + '/images/image' + num;
-								console.log(num);
-								updates['/users/' + userid + '/images/image' + num] = storageRef.fullPath;
-								firebase.database().ref().update(updates);
-							});
-
-							
-							
-							
-							
-						}
-					)			
-				}
-			  
-			  
-			
-			
-			</script>
-		
-		
-	</div>
-	<div id="rightblock"
-		style="position: absolute; top: 75px; bottom: 45px; right: 45px; left: 400px; text-align: left; line-height: 1">
-	
-		<div id="photoManagerWidget" class="ICWidget" style="width: 100%; height: 100%">
-			<h2 class="buttonDivider" style="width: auto">My Images</h2>
-			<!-- APPEND IMAGE DATA HERE FROM THE DATABASE -->
+		<div id="pokedWidget" class="ICWidget" style="position: absolute; left: 800px; height: 400px; width: 100%; overflow-y: hidden">
+			<h2 class="buttonDivider" style="width: auto">Thwippers</h2>
+			<!-- APPEND OFFENDING FRIENDS HERE -->
 		</div>
+		
 	</div>
 			<div id='network-graph' 
 	style="opacity:0; z-index: -100; animation: fadeIn 1s ease-in 0s forwards;"></div>
