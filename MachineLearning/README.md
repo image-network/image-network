@@ -12,3 +12,5 @@ I am still working on our good version of forceatlas (or just some way to produc
 are not optimal. I need to change the `generate_positions` function or try
 to minimize the squares of the differences between node distances and text
 similarities.
+
+I just put everything in a folder called PythonImageNetwork. You can run `imageSim.py` to classify images in an `img/` folder which I will later need to collate or update from each users profile in firebase. You can call `jaccardSimilarity.py` to generate the netgraph for sigma.

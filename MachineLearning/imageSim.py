@@ -18,13 +18,24 @@ def getImages():
 				# dump out to file with the specific identifier
 				with open('classified/' + file_name.split('.')[0]+'_raw.json', 'w') as json_file:
 					dump(result, json_file, indent=4)
-				with open('classified/' + file_name.split('.')[0] + '_proc.json', 'w') as json_file:
+				with open('classified/' + file_name.split('.')[0] + '_proc.txt', 'w') as json_file:
 					shortenedResult = {}
 					b = result['images'][0]['classifiers'][0]['classes']
 					listOfAnnotations = []
 					for classification in b:
 						listOfAnnotations.append(classification['class'])
 					json_file.write(' '.join(listOfAnnotations))
+				with open('classified/' + file_name.split('.')[0] + '_score.txt', 'w') as json_file:
+					shortenedResult = {}
+					b = result['images'][0]['classifiers'][0]['classes']
+					listOfAnnotations = []
+					for classification in b:
+						listOfAnnotations.append(classification['class'])
+						listOfAnnotations.append(str(classification['score']))
+					outputStr = ""
+					for i in xrange(0, len(listOfAnnotations), 2):
+						outputStr += listOfAnnotations[i] + " " + listOfAnnotations[i+1] + "\n"
+					json_file.write(outputStr)
 		except Exception, e:
 			print e
 
