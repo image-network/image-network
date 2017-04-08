@@ -30,7 +30,21 @@ public class ImageServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		System.out.println("here");
+		String imageId = (String) request.getAttribute("imageID");
+		String imageUrl = (String) request.getAttribute("imageUrl");
+		String userId = (String) request.getAttribute("userID");
+
+		try {
+			Runtime.getRuntime().exec(
+					"python ../MachineLearning/imageSimUrl.py -ud" + userId + " -imd" + imageId + " -imu" + imageUrl);
+
+			Runtime.getRuntime().exec("python ../MachineLearning/jaccardSimilarity.py");
+
+		} catch (IOException i) {
+			System.out.println(i.getMessage());
+		}
+
+		System.out.println(System.getProperty("user.dir"));
 	}
 
 }
