@@ -159,7 +159,28 @@
 		</div>
 		<br />
 		<br />
-		<script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+		
+		
+	</div>
+	<div id="rightblock"
+		style="position: absolute; top: 75px; bottom: 45px; right: 45px; left: 400px; text-align: left; line-height: 1">
+	
+		<div id="photoManagerWidget" class="ICWidget" style="width: 100%; height: 100%">
+			<h2 id="myImages" class="buttonDivider" style="width: auto">My Images</h2>
+			<!-- APPEND IMAGE DATA HERE FROM THE DATABASE -->
+			
+			
+			
+			
+			
+			
+		</div>
+	</div>
+			<div id='network-graph' 
+	style="opacity:0; z-index: -100; animation: fadeIn 1s ease-in 0s forwards;"></div>
+	<script>drawGraphStill('network-graph', 50, ((25*24) / 2), '#2fa87e', '#2fa87e', 1, 3)</script>
+	
+	<script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
 		<script>
 			//initialize firebase
 			 var config = {
@@ -180,6 +201,7 @@
 			  
 			  var currentUser;
 			  var userid;
+			  var imageDiv = document.getElementById("myImages");
 			  
 			  firebase.auth().onAuthStateChanged(function(user) {
 				  if (user) {
@@ -188,7 +210,7 @@
 					  console.log(currentUser);
 					  userid = user.uid;
 					  
-						
+				/* 	  
 					  firebase.database().ref('/users/'+ userid + '/images/image0').once('value').then(function(snapshot){
 							var profilePic = snapshot.val();
 							
@@ -211,7 +233,61 @@
 								console.log(error);
 							});
 							
-					  });
+					  }); */ 
+					  var num;
+					  firebase.database().ref('/users/'+ userid + '/images').once("value").then(function(snapshot){
+						  
+							console.log(snapshot.val());
+							num = snapshot.numChildren();
+							console.log(num);
+							console.log(snapshot.numChildren());
+							
+							
+							for (i = 0; i < num; i++) { 
+								firebase.database().ref('/users/'+ userid + '/images/image' + i).once('value').then(function(snapshot){
+
+									
+									var profilePic = snapshot.val();
+									
+									var storageRef = firebase.storage().ref(profilePic);
+									console.log(profilePic);
+							  
+									storageRef.getDownloadURL().then(function(url){
+								
+									/*   var xhr = new XMLHttpRequest();
+									  xhr.responseType = 'blob';
+									  xhr.onload = function(event) {
+									    var blob = xhr.response;
+									  };
+									  xhr.open('GET', url, false);
+									  xhr.send();
+									   */
+									// if(i == 1){
+										
+									 		img.src = url;
+									 //}
+						
+	 
+									  var newImage = document.createElement("image");
+										
+										newImage.setAttribute('src', url);
+										
+										imageDiv.appendChild(newImage)
+									  
+								      
+										
+									}).catch(function(error){
+										console.log(error);
+									});
+
+									
+							  });
+							}
+						
+							
+						});
+						
+					
 				  } else {
 				   
 				  }
@@ -257,10 +333,40 @@
 								
 								var updates = {};
 								var path = '/users/' + userid + '/images/image' + num;
-								console.log(num);
+								
 								updates['/users/' + userid + '/images/image' + num] = storageRef.fullPath;
 								firebase.database().ref().update(updates);
+									
+								
+									
+									storageRef.getDownloadURL().then(function(url){
+										
+										var xhttp = new XMLHttpRequest();
+										//gets the path
+										var path = "/"+window.location.pathname.split("/")[1];
+										//create url
+										
+										
+										
+										
+										var url = path + "/ImageServlet?userID=" + userid + "&imageID="+snapshot.key +"&imageUrl=" + url;						
+										xhttp.open("GET", url, false);
+										xhttp.send();
+					
+										
+									}).catch(function(error){
+										console.log(error);
+									});
+
+							
+								
+								
+								
+								
 							});
+							
+							
+							
 						}
 					)			
 				}
@@ -270,18 +376,5 @@
 			
 			</script>
 		
-		
-	</div>
-	<div id="rightblock"
-		style="position: absolute; top: 75px; bottom: 45px; right: 45px; left: 400px; text-align: left; line-height: 1">
-	
-		<div id="photoManagerWidget" class="ICWidget" style="width: 100%; height: 100%">
-			<h2 class="buttonDivider" style="width: auto">My Images</h2>
-			<!-- APPEND IMAGE DATA HERE FROM THE DATABASE -->
-		</div>
-	</div>
-			<div id='network-graph' 
-	style="opacity:0; z-index: -100; animation: fadeIn 1s ease-in 0s forwards;"></div>
-	<script>drawGraphStill('network-graph', 50, ((25*24) / 2), '#2fa87e', '#2fa87e', 1, 3)</script>
 </body>
 </html>
