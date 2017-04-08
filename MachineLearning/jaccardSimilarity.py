@@ -96,8 +96,8 @@ def generate_netgraph(network):
 			new_edge['source'] = node
 			new_edge['target'] = relation
 			netgraph['edges'].append(new_edge)
-	# with open('../WebContent/sigma-data/netgraph.json', 'w') as json_file:
-	with open('netgraph.json', 'w') as json_file:
+	with open('../WebContent/sigma-data/netgraph.json', 'w') as json_file:
+	# with open('netgraph.json', 'w') as json_file:
 		dump(netgraph, json_file, indent=4)
 
 
