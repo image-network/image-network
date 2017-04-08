@@ -5,11 +5,11 @@
             "status": "default", 
             "label": "car", 
             "lname": "default", 
-            "y": 75.00511273768458, 
+            "y": 268.9478771907937, 
             "profilePicture": "", 
             "fname": "default", 
             "images": {}, 
-            "x": -75.34164887488035, 
+            "x": 209.7403907760222, 
             "id": "car", 
             "size": 1
         }, 
@@ -18,12 +18,25 @@
             "status": "default", 
             "label": "face", 
             "lname": "default", 
-            "y": 66.04520377494629, 
+            "y": 265.2081751609192, 
             "profilePicture": "", 
             "fname": "default", 
             "images": {}, 
-            "x": -78.9065382362751, 
+            "x": 215.29172287862406, 
             "id": "face", 
+            "size": 1
+        }, 
+        {
+            "username": "default", 
+            "status": "default", 
+            "label": "12345|image0", 
+            "lname": "default", 
+            "y": 266.64206060640106, 
+            "profilePicture": "", 
+            "fname": "default", 
+            "images": {}, 
+            "x": 213.11333669298548, 
+            "id": "12345|image0", 
             "size": 1
         }, 
         {
@@ -31,11 +44,11 @@
             "status": "default", 
             "label": "text", 
             "lname": "default", 
-            "y": 70.61070256263021, 
+            "y": 265.2585922948794, 
             "profilePicture": "", 
             "fname": "default", 
             "images": {}, 
-            "x": -76.55260287131541, 
+            "x": 213.506165822956, 
             "id": "text", 
             "size": 1
         }
@@ -49,26 +62,56 @@
         {
             "source": "car", 
             "id": "e1", 
+            "target": "12345|image0"
+        }, 
+        {
+            "source": "car", 
+            "id": "e2", 
             "target": "face"
         }, 
         {
             "source": "face", 
-            "id": "e2", 
+            "id": "e3", 
             "target": "car"
         }, 
         {
             "source": "face", 
-            "id": "e3", 
+            "id": "e4", 
+            "target": "12345|image0"
+        }, 
+        {
+            "source": "face", 
+            "id": "e5", 
+            "target": "text"
+        }, 
+        {
+            "source": "12345|image0", 
+            "id": "e6", 
+            "target": "car"
+        }, 
+        {
+            "source": "12345|image0", 
+            "id": "e7", 
+            "target": "face"
+        }, 
+        {
+            "source": "12345|image0", 
+            "id": "e8", 
             "target": "text"
         }, 
         {
             "source": "text", 
-            "id": "e4", 
+            "id": "e9", 
             "target": "car"
         }, 
         {
             "source": "text", 
-            "id": "e5", 
+            "id": "e10", 
+            "target": "12345|image0"
+        }, 
+        {
+            "source": "text", 
+            "id": "e11", 
             "target": "face"
         }
     ]
