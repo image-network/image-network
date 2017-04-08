@@ -1,5 +1,5 @@
 package image_network;
 
-public class JSONParser {
+public class JSONBuilder {
 
 }
