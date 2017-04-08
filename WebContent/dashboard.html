@@ -249,17 +249,15 @@
 					var profile2 = document.getElementById('dashboardProfile');
 
 					// Get the current user
-					var user = firebase.auth().currentUser;
-					if (user) {
-						var ref = firebase.database().ref('users/' + user.uid);
-						ref.once('value').then(function(snapshot) {
-							var child = snapshot.child('email').val();
-							profile.innerHTML = child;
-							profile2.innerHTML = child;
-						}).catch(function(error){
-							// Error occurred
-						});
-					}
+					/* var user = firebase.auth().currentUser; */
+					var ref = firebase.database().ref('users/' + user.uid);
+					ref.once('value').then(function(snapshot) {
+						var child = snapshot.child('email').val();
+						profile.innerHTML = child;
+						profile2.innerHTML = child;
+					}).catch(function(error){
+						// Error occurred
+					});
 				} else {
 					// User is not signed in, segue to login page
 					window.location = 'login.html';

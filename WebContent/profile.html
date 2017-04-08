@@ -8,8 +8,115 @@
 </head>
 	</head>
 	<body>
-		<div id="main" style="color: #fff; text-align: center;">
+		<div id="headerContent"
+		style="overflow-y: hidden; padding-left: 2px; text-align: left; vertical-align: middle; animation: fadeInFromTop 0.1s forwards;">
+		<img src="images/logotentative.png" height=45px />
+
+		<button class="animatedButton" onclick="toggleNavBar()"
+			style="cursor: pointer; float: right; margin-right: 20px; background-color: inherit;"
+			height=45px>=</button>
+		<img src="images/spider_icon.png" onclick="toggleWolfgang();"
+			style="float: right; padding-right: 20px;" height=45px />
+
+		</div>
+		<div id="database-adjacent-reverse">
+	
+			<h1 class="buttonDivider">Dashboard</h1>
+			<div id="database-subfill" style="background-color: #555555;">
+				<table
+					style="text-align: center; background-color: #555555; width: 100%; border-bottom: 1px solid grey;">
+					<tr>
+						<td><img src="images/default_profilepicture.png"
+							style="padding: 10px; border-radius: 25px;" width=70 /></td>
+						<td>
+							<table style="text-align: left">
+								<tr>
+									<td id="dashboardProfile"></td>
+								</tr>
+								<tr>
+									<td><a href="profile.html">Profile Details</a></td>
+								</tr>
+								<tr>
+									<td><a href="#" id="sign-out">Sign Out</a></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+	
+	
+				<p class="buttonDivider" style="text-align: left">MY WEB</p>
+				<button class="animatedButton" style="width: 100%; text-align: left"
+					onclick="location.href = 'dashboard.html'">DASHBOARD</button>
+				<button class="animatedButton" style="width: 100%; text-align: left"
+					onclick="location.href = 'images.html'">IMAGES</button>
+				<button class="animatedButton" style="width: 100%; text-align: left"
+					onclick="location.href = 'explore.html'">EXPLORE</button>
+				<p class="buttonDivider" style="text-align: left">SOCIAL</p>
+				<button class="animatedButton" style="width: 100%; text-align: left"
+					onclick="location.href = 'users.html'">USERS</button>
+				<button class="animatedButton" style="width: 100%; text-align: left"
+					onclick="location.href = 'pokes.html'">POKES</button>
+				<button class="animatedButton" style="width: 100%; text-align: left"
+					onclick="location.href = 'friendsearch.html'">FRIEND SEARCH</button>
+				<p class="buttonDivider" style="text-align: left">SITE</p>
+				<button class="animatedButton" style="width: 100%; text-align: left"
+					onclick="location.href = 'contact.html'">CONTACT</button>
+				<button class="animatedButton" style="width: 100%; text-align: left"
+					onclick="location.href = 'contact.html'">SITE POLICY</button>
+	
+				<script type="text/javascript">
+					sideToggled = true;
+					document.getElementById("database-adjacent-reverse").style.animation = "offscreenLeft 0.1s forwards";
+					function toggleNavBar() {
+						if (!sideToggled)
+	
+							document.getElementById("database-adjacent-reverse").style.animation = "offscreenLeft 0.1s forwards";
+						else
+							document.getElementById("database-adjacent-reverse").style.animation = "backToScreenLeft 0.1s forwards";
+						sideToggled = !sideToggled;
+					}
+	
+					function mouseOverNavBar() {
+						if (document.getElementById("database-adjacent-reverse").style.animation === "offscreenLeft 0.1s forwards")
+							document.getElementById("database-adjacent-reverse").style.animation = "backToScreenLeft 0.1s forwards";
+						sideToggled = false;
+					}
+				</script>
+				<button class="symbolButton" id="sideToggle" onclick="toggleNavBar()"
+					onmouseover="mouseOverNavBar()"
+					style="position: absolute; left: 100%; bottom: 0; width: 10px; padding: 0; height: 100%;">|||</button>
+			</div>
+		</div>
+	
+	
+	
+		<!--  Wolfgang Module -->
+		<script src="js/wolfgang.js"></script>
+		<div id="wolfgang"
+			style="display: none; position: absolute; top: 500px; left: 500px; z-index: 100">
+			<p
+				style="position: absolute; left: 100%; bottom: 75%; transform: rotate(45deg); background-color: #ffffff; border-radius: 25px;"
+				width=200>|</p>
+			<div id="wolfgangSpeechBubble"
+				style="position: absolute; left: 100%; bottom: 100%; width: 400px;">
+				<p id="wolfgangText"
+					style="background-color: #ffffff; color: #000000; text-align: center; padding: 30px; border-radius: 55px;">Howdy!
+					I'm Wolfgang! If you can't find your way around, you can find me in
+					the upper right corner of the screen!</p>
+				<button class="animatedButton" onclick="toggleWolfgang()"
+					style="position: absolute; bottom: 75%; left: 95%; border-radius: 40px; padding: 5px; font-size: 10px; background-color: #ff0000">X</button>
+			</div>
+			<img src="images/spider.png" onclick="generateSpideryWisdom()"
+				width=100 />
+		</div>
+		<!-- END Wolfgang Module -->
+	
+		<!-- End NavBar Module -->
+	
+		<div id="main" style="color: #fff; text-align: center; margin-top: 100px; border-bottom: 1px solid #1fa76e; padding-bottom: 25px;">
 			<div id="name"></div>
+			<div id="profile-img"></div>
 			<div id="username"></div>
 			<div id="email"></div>
 		</div>
