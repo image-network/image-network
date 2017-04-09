@@ -35,7 +35,7 @@
 			<table
 				style="text-align: center; background-color: #555555; width: 100%; border-bottom: 1px solid grey;">
 				<tr>
-					<td><img src="images/default_profilepicture.png"
+					<td><img id="profile_pic" src="/images/default_profilepicture.png"
 						style="padding: 10px; border-radius: 25px;" width=70 /></td>
 					<td>
 						<table style="text-align: left">
@@ -73,6 +73,7 @@
 				onclick="location.href = 'contact.html'">CONTACT</button>
 			<button class="animatedButton" style="width: 100%; text-align: left"
 				onclick="location.href = 'contact.html'">SITE POLICY</button>
+
 
 			<script type="text/javascript">
 				sideToggled = true;
@@ -144,7 +145,7 @@
 		<div class="ICWidget">
 			<table>
 				<tr>
-					<td><img src="images/default_profilepicture.png"
+					<td><img id="profile_pic2" src="images/default_profilepicture.png"
 						style="padding: 10px; border-radius: 25px;" width=70 /></td>
 					<td>
 						<table style="text-align: left">
@@ -224,6 +225,44 @@
           
           mainSigma.refresh();
           }
+          
+          var uploader = document.getElementById('uploader');
+		  var fileButton = document.getElementById('fileButton');
+		
+		  var img = document.getElementById("profile_pic");
+		  var img2 = document.getElementById("profile_pic2");
+		  
+		  var currentUser;
+		  var userid;
+		  
+		  firebase.auth().onAuthStateChanged(function(user) {
+			  if (user) {
+				  currentUser = user;
+				  console.log(user);
+				  console.log(currentUser);
+				  userid = user.uid;
+				  
+					
+				  firebase.database().ref('/users/'+ userid + '/images/image0').once('value').then(function(snapshot){
+						var profilePic = snapshot.val();
+						
+						var storageRef = firebase.storage().ref(profilePic);
+						console.log(profilePic);
+				  
+						storageRef.getDownloadURL().then(function(url){
+							
+						  img.src = url;
+						  img2.src = url;
+							
+						}).catch(function(error){
+							console.log(error);
+						});
+						
+				  });
+			  } else {
+			   
+			  }
+			});
           
         initHome();
       }
