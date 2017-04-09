@@ -75,7 +75,7 @@
 			<button class="animatedButton" style="width: 100%; text-align: left"
 				onclick="location.href = 'pokes.html'">POKES</button>
 			<button class="animatedButton" style="width: 100%; text-align: left"
-				onclick="location.href = 'friendsearch.html'">FRIEND SEARCH</button>
+				onclick="location.href = 'friendSearch.html'">FRIEND SEARCH</button>
 			<p class="buttonDivider" style="text-align: left">SITE</p>
 			<button class="animatedButton" style="width: 100%; text-align: left"
 				onclick="location.href = 'contact.html'">CONTACT</button>
@@ -265,7 +265,7 @@
 					if (user) {
 						var ref = firebase.database().ref('users/' + user.uid);
 						ref.once('value').then(function(snapshot) {
-							var child = snapshot.child('email').val();
+							var child = snapshot.child('username').val();
 							profile.innerHTML = child;
 						}).catch(function(error){
 							// Error occurred

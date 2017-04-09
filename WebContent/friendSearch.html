@@ -16,8 +16,20 @@
 		
 		<!-- END SIGMA IMPORTS -->
 	</head>
+	<style>
+		.newResult {
+			padding-left: 15px;
+			padding-top: 15px;
+			background-color: #e9ebee;
+			border-bottom: 1px solid #d3d3d3;
+		}
+		
+		#username {
+			width: 300px;
+		}
+	</style>
 	<body>
-		<div id="headerContent"
+				<div id="headerContent"
 		style="overflow-y: hidden; padding-left: 2px; text-align: left; vertical-align: middle; animation: fadeInFromTop 0.1s forwards;">
 		<img src="images/logotentative.png" height=45px />
 
@@ -35,7 +47,7 @@
 				<table
 					style="text-align: center; background-color: #555555; width: 100%; border-bottom: 1px solid grey;">
 					<tr>
-						<td><img id="profile_pic" src="images/default_profilepicture.png"
+						<td><img src="images/default_profilepicture.png"
 							style="padding: 10px; border-radius: 25px;" width=70 /></td>
 						<td>
 							<table style="text-align: left">
@@ -123,19 +135,21 @@
 	
 		<!-- End NavBar Module -->
 	
-		<div id="main" style="color: #fff; text-align: center; width: 300px; 
-		margin: 0 auto; margin-top: 100px; background-color: #222222; 
-		padding-bottom: 30px; padding-top: 15px; border-radius: 5px;">
-			<div id="name"></div>
-			<img id="profile-img" style="width: 150px; border-radius: 10px; margin-bottom: 10px;"/>
-			<div id="username" style="margin-bottom: 10px;"></div>
-			<div id="email"></div>
+		<div id="main" style="width: 500px; margin: 0 auto; margin-top: 100px;"">
+			<div id="form" style="width: 300px; margin: 0 auto;">
+				<input id="username" type="text" name="username" autocomplete="off" placeholder="Username" onchange="search()" 
+				onkeyup="this.onchange()" onpaste="this.onchange()" oninput="this.onchange()"/>
+			</div>
+			<div id="result" style="width: 300px; margin: 0 auto;">
+				
+			</div>
 		</div>
 		
 		<div id='network-graph' 
 	style="opacity:0; z-index: -100; animation: fadeIn 1s ease-in 0s forwards;"></div>
 	<script>drawGraphStill('network-graph', 50, ((25*24) / 2), '#2fa87e', '#2fa87e', 1, 3)</script>
 		<script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+		<!-- MARK: Firebase scripts -->
 		<script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
 		<script>
 		  // Initialize Firebase
@@ -151,91 +165,64 @@
 	
 	      // Call initApp() upon the window loading
 	      window.onload = function() {
-	    	  var img = document.getElementById('profile_pic');
-	    	  var img2 = document.getElementById('profile-img');
-	    	  firebase.auth().onAuthStateChanged(function(user) {
-				  if (user) {
-					  currentUser = user;
-					  console.log(user);
-					  console.log(currentUser);
-					  userid = user.uid;
-					  
-						
-					  firebase.database().ref('/users/'+ userid + '/images/image0').once('value').then(function(snapshot){
-							var profilePic = snapshot.val();
-							
-							var storageRef = firebase.storage().ref(profilePic);
-							console.log(profilePic);
-					  
-							storageRef.getDownloadURL().then(function(url){
-								
-							  img.src = url;
-							  img2.src = url;
-								
-							}).catch(function(error){
-								console.log(error);
-							});
-							
-					  });
-				  } else {
-				   
-				  }
-			  });
-	        loadProfileInfo();
-	        loadDashboardProfile();
+		  	  loadDashboardProfile();
 	      }
-		</script>
-		<script>
-			function loadProfileInfo() {
-				firebase.auth().onAuthStateChanged(function(user) {
-					if (user) {
-						// Populate profile info
-						/* var main = document.getElementById('main'); */
-						var nameDiv = document.getElementById('name');
-						var usernameDiv = document.getElementById('username');
-						var emailDiv = document.getElementById('email');
-	
-						var user = firebase.auth().currentUser;
-						if (user) {
-							var ref = firebase.database().ref('users/' + user.uid);
-							ref.once('value').then(function(snapshot) {
-								var fname = snapshot.child('fname').val();
-								var lname = snapshot.child('lname').val();
-								var username = snapshot.child('username').val();
-								var email = snapshot.child('email').val();
-								nameDiv.innerHTML = '<strong><h1>' + fname + ' ' + lname + '</h1></strong>';
-								usernameDiv.innerHTML = '<span style="color: green;">@' 
-									+ username + '</span>';
-								emailDiv.innerHTML = email;
-							}).catch(function(error) {
-	
-							});
-						}
-					}
-				});
-			}
-			
-			function loadDashboardProfile() {
-		    	  firebase.auth().onAuthStateChanged(function(user) {
-	    				if (user) {
-		    				// Populate username info
-		    				var profile = document.getElementById('dashboardProfile');
-		    		
-		    				// Get the current user
-		    				/* var user = firebase.auth().currentUser; */
-		    				var ref = firebase.database().ref('users/' + user.uid);
-		    				ref.once('value').then(function(snapshot) {
-		    					var child = snapshot.child('username').val();
-		    					profile.innerHTML = child;
-		    				}).catch(function(error){
-		    					// Error occurred
-		    				});
-		    			} else {
-		    				// User is not signed in, segue to login page
-		    				window.location = 'login.html';
-	    				}
-	    		  });
-		      }
+	      
+	      function search() {
+	    	  var input = document.getElementById('username').value;
+	    	  var result = document.getElementById('result');
+	    	  var users;
+	    	  var ref = firebase.database().ref();
+	    	  ref.child('users').orderByChild('username').once('value').then(function(snapshot) {
+	    		 if (snapshot) {
+	    			 users = snapshot.val();
+	    			 if (input == '') {
+	    				 while (result.firstChild) {
+	    					 result.removeChild(result.firstChild);
+	    				 }
+	    				 return;
+	    			 }
+	    			 while (result.firstChild) {
+    					 result.removeChild(result.firstChild);
+    				 }
+	    			 for (var key in users) {
+		    			 if ((users[key].username.toLowerCase().includes(input.toLowerCase()) || 
+		    					 users[key].fullname.toLowerCase().includes(input.toLowerCase())) && input != '') {
+							 var focus = users[key];
+		    				 var newResult = document.createElement('div');
+		    				 newResult.className = 'newResult';
+		    				 newResult.innerHTML = '<a href="#"><div>' + focus.fullname + '<br><span style="color: green; font-size: 0.9em;">@' + 
+		    				 	focus.username + '</span><br><br></div></a>';
+		    				 result.appendChild(newResult);
+		    			 }
+		    		 }
+	    		 } 
+	    	  }).catch(function(error) {
+	    		  
+	    	  });
+	      }
+	      
+	      function loadDashboardProfile() {
+	    	  firebase.auth().onAuthStateChanged(function(user) {
+    				if (user) {
+	    				// Populate username info
+	    				var profile = document.getElementById('dashboardProfile');
+	    		
+	    				// Get the current user
+	    				/* var user = firebase.auth().currentUser; */
+	    				var ref = firebase.database().ref('users/' + user.uid);
+	    				ref.once('value').then(function(snapshot) {
+	    					var child = snapshot.child('username').val();
+	    					profile.innerHTML = child;
+	    				}).catch(function(error){
+	    					// Error occurred
+	    				});
+	    			} else {
+	    				// User is not signed in, segue to login page
+	    				window.location = 'login.html';
+    				}
+    		  });
+	      }
 		</script>
 	</body>
 </html>

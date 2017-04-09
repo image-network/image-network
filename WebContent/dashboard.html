@@ -36,7 +36,7 @@
 				style="text-align: center; background-color: #555555; width: 100%; border-bottom: 1px solid grey;">
 				<tr>
 					<td><img id="profile_pic" src="/images/default_profilepicture.png"
-						style="padding: 10px; border-radius: 25px;" width=70 /></td>
+						style="padding: 10px; border-radius: 25px;" width=70px; /></td>
 					<td>
 						<table style="text-align: left">
 							<tr>
@@ -67,7 +67,7 @@
 			<button class="animatedButton" style="width: 100%; text-align: left"
 				onclick="location.href = 'pokes.html'">POKES</button>
 			<button class="animatedButton" style="width: 100%; text-align: left"
-				onclick="location.href = 'friendsearch.html'">FRIEND SEARCH</button>
+				onclick="location.href = 'friendSearch.html'">FRIEND SEARCH</button>
 			<p class="buttonDivider" style="text-align: left">SITE</p>
 			<button class="animatedButton" style="width: 100%; text-align: left"
 				onclick="location.href = 'contact.html'">CONTACT</button>
@@ -153,7 +153,7 @@
 								<td id="profile"></td>
 							</tr>
 							<tr>
-								<td><a href="profiledetails.html">Profile Details</a></td>
+								<td><a href="profile.html">Profile Details</a></td>
 							</tr>
 							<tr>
 								<td><a href="#" id="sign-out">Sign Out</a></td>
@@ -291,7 +291,7 @@
 					/* var user = firebase.auth().currentUser; */
 					var ref = firebase.database().ref('users/' + user.uid);
 					ref.once('value').then(function(snapshot) {
-						var child = snapshot.child('email').val();
+						var child = snapshot.child('username').val();
 						profile.innerHTML = child;
 						profile2.innerHTML = child;
 					}).catch(function(error){
