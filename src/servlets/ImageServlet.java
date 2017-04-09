@@ -1,6 +1,8 @@
 package servlets;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,21 +36,29 @@ public class ImageServlet extends HttpServlet {
 		String imageUrl = (String) request.getParameter("imageUrl");
 		String userId = (String) request.getParameter("userID");
 
-		System.out.println(imageId);
-		System.out.println(imageUrl);
-		System.out.println(userId);
+		String params = " -ud " + userId + " -imd " + imageId + " -imu " + imageUrl;
 
+		// Can comment out the try and catch block, if you don't want to run the
+		// python part
+		// and you just want to test the parameters
 		try {
-			Runtime.getRuntime().exec(
-					"python ../MachineLearning/imageSimUrl.py -ud" + userId + " -imd" + imageId + " -imu" + imageUrl);
+			String path = "/Users/sriramsomasundaram/Documents/workspace/image-network/MachineLearning/";
+			ProcessBuilder pb = new ProcessBuilder("python", path + "imageSimUrl.py" + params);
+			Process p = pb.start();
+			BufferedReader in = new BufferedReader(new InputStreamReader(p.getErrorStream()));
+			p.waitFor();
+			System.out.println(in.readLine());
 
-			Runtime.getRuntime().exec("python ../MachineLearning/jaccardSimilarity.py");
-
-		} catch (IOException i) {
-			System.out.println(i.getMessage());
+			ProcessBuilder pb2 = new ProcessBuilder("python", path + "jaccardSimilarity.py");
+			Process p2 = pb2.start();
+			BufferedReader in2 = new BufferedReader(new InputStreamReader(p.getErrorStream()));
+			p2.waitFor();
+			System.out.println(in2.readLine());
+		} catch (Exception e) {
+			System.out.println(e);
 		}
 
-		System.out.println(System.getProperty("user.dir"));
+		System.out.println("here");
 	}
 
 }
