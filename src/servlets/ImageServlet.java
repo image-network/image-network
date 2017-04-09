@@ -30,9 +30,13 @@ public class ImageServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String imageId = (String) request.getAttribute("imageID");
-		String imageUrl = (String) request.getAttribute("imageUrl");
-		String userId = (String) request.getAttribute("userID");
+		String imageId = (String) request.getParameter("imageID");
+		String imageUrl = (String) request.getParameter("imageUrl");
+		String userId = (String) request.getParameter("userID");
+
+		System.out.println(imageId);
+		System.out.println(imageUrl);
+		System.out.println(userId);
 
 		try {
 			Runtime.getRuntime().exec(
