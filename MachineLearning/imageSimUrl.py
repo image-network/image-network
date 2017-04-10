@@ -8,7 +8,7 @@ from os import environ
 from watson_developer_cloud import VisualRecognitionV3
 import argparse
 
-api_key = '765736dbfb9d4bcf1824ac87be85c107bcc2275f'
+api_key = '86f5d20959e6fe2dccf75285dd2157b07be91c70'
 visual_recognition = VisualRecognitionV3('2016-05-20', api_key=api_key)
 
 
