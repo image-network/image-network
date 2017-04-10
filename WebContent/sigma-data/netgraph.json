@@ -1,74 +1,75 @@
 {
-  "nodes": [
-    {
-      "id": "n0",
-      "label": "knagoogin",
-      "fname": "Kevin",
-      "lname": "Nguyen",
-      "username": "knagoogin@usc.edu",
-      "status": "Furiously clicking on Wolfgang",
-      "images": {
-      	"Picture1": "images/1932303_700b.jpg",
-      	"Picture2": "images/1932303_700b.jpg",
-      	"Picture3": "images/1932303_700b.jpg"
-      	},
-      "profilePicture": "images/1932303_700b.jpg",
-      "x": 0,
-      "y": 0,
-      "size": 3
-    },
-    {
-      "id": "n1",
-      "label": "sirspindlylegs",
-      "fname": "Wolfgang",
-      "lname": "von Buttrope",
-      "username": "sirspindly@spindlyuniversity.edu",
-      "status": "Busy helping people navigate imgcrawler",
-      "images": {
-      	"Picture1": "images/1932303_700b.jpg",
-      	"Picture2": "images/1932303_700b.jpg",
-      	"Picture3": "images/1932303_700b.jpg"
-      	},
-      
-      "profilePicture": "images/spider.png",
-      "x": 0,
-      "y": 1,
-      "size": 2
-    },
-    {
-      "id": "n2",
-      "label": "tehgrader",
-      "fname": "Jeffrey",
-      "lname": "Miller",
-      "username": "jeffyboy",
-      "status": "Making students' lives miserable, one test at a time",
-      "images": {
-      	"Picture1": "http://www-scf.usc.edu/~csci201/images/matteo_tanaka.jpg",
-      	"Picture2": "http://www-scf.usc.edu/~csci201/images/dana_thomas.jpg",
-      	"Picture3": "http://www-scf.usc.edu/~csci201/images/anthony_tu.jpg"
-      	},
-      
-      "profilePicture": "http://www-scf.usc.edu/~csci201/images/jeffrey_miller.jpg",
-      "x": 1,
-      "y": 2,
-      "size": 1
-    }
-  ],
-  "edges": [
-    {
-      "id": "e0",
-      "source": "n0",
-      "target": "n1"
-    },
-    {
-      "id": "e1",
-      "source": "n1",
-      "target": "n2"
-    },
-    {
-      "id": "e2",
-      "source": "n2",
-      "target": "n0"
-    }
-  ]
+    "nodes": [
+        {
+            "username": "default", 
+            "status": "default", 
+            "label": "car", 
+            "lname": "default", 
+            "y": 49.567631237247326, 
+            "profilePicture": "", 
+            "fname": "default", 
+            "images": {}, 
+            "x": -109.18884797936104, 
+            "id": "car", 
+            "size": 1
+        }, 
+        {
+            "username": "default", 
+            "status": "default", 
+            "label": "face", 
+            "lname": "default", 
+            "y": 39.684721079143, 
+            "profilePicture": "", 
+            "fname": "default", 
+            "images": {}, 
+            "x": -113.97916888966752, 
+            "id": "face", 
+            "size": 1
+        }, 
+        {
+            "username": "default", 
+            "status": "default", 
+            "label": "text", 
+            "lname": "default", 
+            "y": 44.31551097199869, 
+            "profilePicture": "", 
+            "fname": "default", 
+            "images": {}, 
+            "x": -111.51993442249864, 
+            "id": "text", 
+            "size": 1
+        }
+    ], 
+    "edges": [
+        {
+            "source": "car", 
+            "id": "e0", 
+            "target": "text"
+        }, 
+        {
+            "source": "car", 
+            "id": "e1", 
+            "target": "face"
+        }, 
+        {
+            "source": "face", 
+            "id": "e2", 
+            "target": "car"
+        }, 
+        {
+            "source": "face", 
+            "id": "e3", 
+            "target": "text"
+        }, 
+        {
+            "source": "text", 
+            "id": "e4", 
+            "target": "car"
+        }, 
+        {
+            "source": "text", 
+            "id": "e5", 
+            "target": "face"
+        }
+    ]
 }

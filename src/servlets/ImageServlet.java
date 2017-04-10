@@ -42,7 +42,7 @@ public class ImageServlet extends HttpServlet {
 		// python part
 		// and you just want to test the parameters
 		try {
-			String path = "/Users/sriramsomasundaram/Documents/workspace/image-network/MachineLearning/";
+			String path = "/Users/kevinnguyen/Documents/Code/image-network/image-network/MachineLearning/";
 			ProcessBuilder pb = new ProcessBuilder("python", path + "imageSimUrl.py" + params);
 			Process p = pb.start();
 			BufferedReader in = new BufferedReader(new InputStreamReader(p.getErrorStream()));
