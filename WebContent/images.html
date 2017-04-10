@@ -301,6 +301,8 @@
 					//create a storage ref
 					var storageRef = firebase.storage().ref('user_uploads/' + file.name);
 					
+					
+					
 					console.log(file.name);
 					
 					//Upload file
@@ -325,43 +327,34 @@
 							
 							
 							firebase.database().ref('/users/'+ userid + '/images').once("value").then(function(snapshot){
-								console.log(snapshot.val());
 								num = snapshot.numChildren();
-								console.log(num);
-								console.log(snapshot.numChildren());
 								
 								var updates = {};
 								var path = '/users/' + userid + '/images/image' + num;
 								
 								updates['/users/' + userid + '/images/image' + num] = storageRef.fullPath;
-								firebase.database().ref().update(updates);
-									
+								firebase.database().ref().update(updates)
 								
-									
-									storageRef.getDownloadURL().then(function(url){
-										
-										var xhttp = new XMLHttpRequest();
-										//gets the path
-										var path = "/"+window.location.pathname.split("/")[1];
-										//create url
-										
-										
-										
-										
-										var url = path + "/ImageServlet?userID=" + userid + "&imageID=image"+num +"&imageUrl=" + url;						
-										xhttp.open("GET", url, false);
-										xhttp.send();
-					
-										
-									}).catch(function(error){
-										console.log(error);
-									});
 
+							});
 							
+							 storageRef.getDownloadURL().then(function(url){
+									
+								 	var xhttp = new XMLHttpRequest();
+									//gets the path
+									var path = "/"+window.location.pathname.split("/")[1];
+									//create url
 								
-								
-								
-								
+									
+									
+									
+									var url2 = path + "/ImageServlet?userID=" + userid + "&imageID=image"+num +"&imageUrl=" + url;						
+									xhttp.open("GET", url2, false);
+									xhttp.send();
+			
+							
+							}).catch(function(error){
+								console.log(error);
 							});
 							
 							
