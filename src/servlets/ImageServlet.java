@@ -35,30 +35,46 @@ public class ImageServlet extends HttpServlet {
 		String imageId = (String) request.getParameter("imageID");
 		String imageUrl = (String) request.getParameter("imageUrl");
 		String userId = (String) request.getParameter("userID");
-
-		String params = " -ud " + userId + " -imd " + imageId + " -imu " + imageUrl;
-
-		// Can comment out the try and catch block, if you don't want to run the
-		// python part
-		// and you just want to test the parameters
+		String path = "/Users/sriramsomasundaram/Documents/workspace/image-network/MachineLearning/";
+		// Note that the path will be unique for you guys as well as pythonPath may be different.
+		// You will most likely use option 1 for python path below. Mine is more specific b/c of weird settings.
+//		String pythonPathOpt1 = "python";
+//		String pythonPathOpt2 = "/Library/Frameworks/Python.framework/Versions/2.7/bin/python";
+		String pythonPath = "/Applications/anaconda/bin/python";
+		String[] command = {pythonPath, path+"imageSimUrl.py",
+                "-ud", userId, 
+                "-imd", imageId ,          
+                "-imu" , imageUrl,
+		};
 		try {
-			String path = "/Users/sriramsomasundaram/Documents/workspace/image-network/MachineLearning/";
-			ProcessBuilder pb = new ProcessBuilder("python", path + "imageSimUrl.py" + params);
+			ProcessBuilder pb = new ProcessBuilder( command );
 			Process p = pb.start();
-			BufferedReader in = new BufferedReader(new InputStreamReader(p.getErrorStream()));
+			// For debugging
+//			BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
+//			BufferedReader in = new BufferedReader(new InputStreamReader(p.getErrorStream()));
 			p.waitFor();
-			System.out.println(in.readLine());
+			// For debugging
+//			String s = null;
+//			while((s = in.readLine()) != null) System.out.println(s);
+//			while((s = input.readLine()) != null) System.out.println(s);
 
 			ProcessBuilder pb2 = new ProcessBuilder("python", path + "jaccardSimilarity.py");
 			Process p2 = pb2.start();
-			BufferedReader in2 = new BufferedReader(new InputStreamReader(p.getErrorStream()));
+			// For debugging
+//			BufferedReader input2 = new BufferedReader(new InputStreamReader(p2.getInputStream()));
+//			BufferedReader in2 = new BufferedReader(new InputStreamReader(p2.getErrorStream()));
 			p2.waitFor();
-			System.out.println(in2.readLine());
+//			while((s = in2.readLine()) != null) System.out.println(s);
+//			while((s = input2.readLine()) != null) System.out.println(s);
+			
+			// After this point, netgraph and score files will have been updated
+			// Call sigma.refresh and can process score files.
+			
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 
-		System.out.println("here");
+		System.out.println("Image uploaded");
 	}
 
 }
