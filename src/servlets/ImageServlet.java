@@ -1,12 +1,16 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import image_network.JSONParser;
+import image_network.Pair;
 
 /**
  * Servlet implementation class ImageServlet
@@ -40,7 +44,7 @@ public class ImageServlet extends HttpServlet {
 
 		System.out.println(imageUrl);
 
-		String path = "/Users/sriramsomasundaram/Documents/workspace/image-network/MachineLearning/";
+		String path = "/Users/kevinnguyen/Documents/Code/image-network/image-network/MachineLearning/";
 		// Note that the path will be unique for you guys as well as pythonPath
 		// may be different.
 		// You will most likely use option 1 for python path below. Mine is more
@@ -48,7 +52,7 @@ public class ImageServlet extends HttpServlet {
 		// String pythonPathOpt1 = "python";
 		// String pythonPathOpt2 =
 		// "/Library/Frameworks/Python.framework/Versions/2.7/bin/python";
-		String pythonPath = "/Applications/anaconda/bin/python";
+		String pythonPath = "/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python2.7";
 		String[] command = { pythonPath, path + "imageSimUrl.py", "-ud", userId, "-imd", imageId, "-imu", imageUrl, };
 		try {
 			ProcessBuilder pb = new ProcessBuilder(command);
@@ -77,6 +81,18 @@ public class ImageServlet extends HttpServlet {
 
 			// After this point, netgraph and score files will have been updated
 			// Call sigma.refresh and can process score files.
+//
+//			for(IProject project : ResourcesPlugin.getWorkspace().getRoot().getProjects()){
+//			    project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+//			}
+			
+			// Instantiate a TxtParser to parse the score txt file
+			JSONParser parser = new JSONParser("/Users/kevinnguyen/Documents/Code/image-network/image-network/MachineLearning/classified/score.json", userId, imageId);
+			parser.parse();
+			ArrayList<Pair<String, Double>> results = parser.getResults();
+			for (Pair<String, Double> r : results) {
+				System.out.println("(" + r.first() + ", " + r.second() + ")");
+			}
 
 		} catch (Exception e) {
 			System.out.println(e);

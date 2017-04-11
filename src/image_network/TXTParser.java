@@ -46,12 +46,12 @@ public class TXTParser {
 	}
 	
 	
-	public static void main(String[] args) {
-		TXTParser p = new TXTParser();
-		ArrayList<Pair<String, Double>> results = p.parse("MachineLearning/classified/text_score.txt");
-		for (Pair<String, Double> pair : results) {
-			System.out.println("(" + pair.first() + ", " + pair.second() + ")");
-		}
-	}
+//	public static void main(String[] args) {
+//		TXTParser p = new TXTParser();
+//		ArrayList<Pair<String, Double>> results = p.parse("MachineLearning/classified/text_score.txt");
+//		for (Pair<String, Double> pair : results) {
+//			System.out.println("(" + pair.first() + ", " + pair.second() + ")");
+//		}
+//	}
 	
 }

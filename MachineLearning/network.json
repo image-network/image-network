@@ -1,14 +1,22 @@
 {
     "car": {
         "text": 0.09523809523809523, 
+        "IocH446C9fSVivn2DX4I1uyyZeA2|image0": 0.125, 
         "face": 0.08
+    }, 
+    "IocH446C9fSVivn2DX4I1uyyZeA2|image0": {
+        "car": 0.125, 
+        "face": 0.047619047619047616, 
+        "text": 0.058823529411764705
     }, 
     "face": {
         "car": 0.08, 
+        "IocH446C9fSVivn2DX4I1uyyZeA2|image0": 0.047619047619047616, 
         "text": 0.125
     }, 
     "text": {
         "car": 0.09523809523809523, 
+        "IocH446C9fSVivn2DX4I1uyyZeA2|image0": 0.058823529411764705, 
         "face": 0.125
     }
 }
