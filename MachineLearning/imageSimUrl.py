@@ -2,7 +2,7 @@ import os
 import sys
 import argparse
 from os import listdir, chdir
-from json import dumps, dump
+from json import dumps, dump, load
 from os.path import join, dirname
 from os import environ
 from watson_developer_cloud import VisualRecognitionV3
@@ -24,17 +24,16 @@ def getImage(user_id, image_id, image_url):
 		for classification in b:
 			listOfAnnotations.append(classification['class'])
 		json_file.write(' '.join(listOfAnnotations))
-	with open('classified/' + user_id + '|' + image_id + '_score.txt', 'w') as json_file:
-		shortenedResult = {}
+	with open('classified/score.json', 'r') as json_file:
+		scoreDict = load(json_file)
+		# scoreDict[file_name.split('.')[0]]
+		scoreEntry = {}
 		b = result['images'][0]['classifiers'][0]['classes']
-		listOfAnnotations = []
 		for classification in b:
-			listOfAnnotations.append(classification['class'])
-			listOfAnnotations.append(str(classification['score']))
-		outputStr = ""
-		for i in xrange(0, len(listOfAnnotations), 2):
-			outputStr += listOfAnnotations[i] + " " + listOfAnnotations[i+1] + "\n"
-		json_file.write(outputStr)
+			scoreEntry[classification['class']] = classification['score']
+		scoreDict[user_id + '|' + image_id] = scoreEntry
+	with open('classified/score.json', 'w') as json_file:
+		dump(scoreDict, json_file, indent=4)
 
 if __name__ == '__main__':
 	# print dirname(__file__)
