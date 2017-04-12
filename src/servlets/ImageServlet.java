@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -90,10 +91,23 @@ public class ImageServlet extends HttpServlet {
 			JSONParser parser = new JSONParser("/Users/kevinnguyen/Documents/Code/image-network/image-network/MachineLearning/classified/score.json", userId, imageId);
 			parser.parse();
 			ArrayList<Pair<String, Double>> results = parser.getResults();
-			for (Pair<String, Double> r : results) {
-				System.out.println("(" + r.first() + ", " + r.second() + ")");
+			
+			response.setContentType("application/json");
+			
+			String json = "{";
+			
+			// debugging code
+			int i;
+			for (i = 0; i < results.size() - 1; i++) {
+				json += "\"" + results.get(i).first() + "\": " + results.get(i).second() + ", ";
+//				System.out.println("(" + r.first() + ", " + r.second() + ")");
 			}
-
+			json += "\"" + results.get(i).first() + "\": " + results.get(i).second() + "}";
+			System.out.println(json);
+			response.getWriter().write(json);
+			System.out.println("worked");
+			return;
+			
 		} catch (Exception e) {
 			System.out.println(e);
 		}

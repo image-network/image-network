@@ -1,4 +1,76 @@
 {
+    "IocH446C9fSVivn2DX4I1uyyZeA2|image14": {
+        "entertainer": 0.53, 
+        "person": 0.735, 
+        "alizarine red color": 0.99, 
+        "people": 0.676
+    }, 
+    "IocH446C9fSVivn2DX4I1uyyZeA2|image15": {
+        "juvenile person": 0.544, 
+        "soul patch facial hair": 0.538, 
+        "people": 0.552, 
+        "gray color": 0.904, 
+        "young man": 0.53, 
+        "person": 0.711, 
+        "charcoal color": 0.597
+    }, 
+    "IocH446C9fSVivn2DX4I1uyyZeA2|image16": {
+        "carnivore": 0.93, 
+        "feline": 0.93, 
+        "domestic cat": 0.9, 
+        "ash grey color": 0.889, 
+        "mouser cat": 0.53, 
+        "cat": 0.912, 
+        "animal": 0.93, 
+        "mammal": 0.93, 
+        "gray color": 0.674, 
+        "tabby cat": 0.716
+    }, 
+    "IocH446C9fSVivn2DX4I1uyyZeA2|image17": {
+        "alizarine red color": 0.737, 
+        "people": 0.53, 
+        "person": 0.717, 
+        "group of people": 0.533, 
+        "demonstrator": 0.532, 
+        "entertainer": 0.53, 
+        "schoolmate": 0.544, 
+        "friend": 0.58
+    }, 
+    "IocH446C9fSVivn2DX4I1uyyZeA2|image11": {
+        "lemon yellow color": 0.808, 
+        "machine": 0.916, 
+        "computer": 0.916, 
+        "web site": 0.916, 
+        "device": 0.916, 
+        "green color": 0.831
+    }, 
+    "IocH446C9fSVivn2DX4I1uyyZeA2|image12": {
+        "juvenile person": 0.567, 
+        "soul patch facial hair": 0.53, 
+        "people": 0.578, 
+        "coal black color": 0.798, 
+        "gray color": 0.81, 
+        "young man": 0.553, 
+        "person": 0.66
+    }, 
+    "IocH446C9fSVivn2DX4I1uyyZeA2|image13": {
+        "soul patch facial hair": 0.53, 
+        "seat belt": 0.591, 
+        "person": 0.771, 
+        "bottle green color": 0.738, 
+        "copilot": 0.726, 
+        "device": 0.591, 
+        "aviator": 0.769, 
+        "olive green color": 0.852
+    }, 
+    "IocH446C9fSVivn2DX4I1uyyZeA2|image3": {
+        "alizarine red color": 0.91, 
+        "eyepatch": 0.733, 
+        "optical device": 0.534, 
+        "sunglass": 0.534, 
+        "device": 0.535, 
+        "blindfold": 0.53
+    }, 
     "IocH446C9fSVivn2DX4I1uyyZeA2|image0": {
         "eyeglasses": 0.535, 
         "alizarine red color": 0.899, 
@@ -8,5 +80,60 @@
         "sunglass": 0.644, 
         "device": 0.731, 
         "blindfold": 0.547
+    }, 
+    "IocH446C9fSVivn2DX4I1uyyZeA2|image6": {
+        "alizarine red color": 0.814, 
+        "eyepatch": 0.552, 
+        "jade green color": 0.848, 
+        "optical device": 0.887, 
+        "sunglass": 0.887, 
+        "device": 0.887, 
+        "blindfold": 0.53
+    }, 
+    "IocH446C9fSVivn2DX4I1uyyZeA2|image7": {
+        "soul patch facial hair": 0.53, 
+        "gray color": 0.575, 
+        "face": 0.612, 
+        "person": 0.657, 
+        "light brown color": 0.654, 
+        "male person": 0.534, 
+        "pompadour hairstyle": 0.532
+    }, 
+    "IocH446C9fSVivn2DX4I1uyyZeA2|image4": {
+        "coal black color": 0.616, 
+        "eyepatch": 0.621, 
+        "jade green color": 0.86, 
+        "optical device": 0.842, 
+        "sunglass": 0.842, 
+        "device": 0.842, 
+        "blindfold": 0.53
+    }, 
+    "IocH446C9fSVivn2DX4I1uyyZeA2|image5": {
+        "alizarine red color": 0.925, 
+        "eyepatch": 0.53, 
+        "jade green color": 0.636, 
+        "person": 0.554, 
+        "optical device": 0.604, 
+        "sunglass": 0.604, 
+        "device": 0.604, 
+        "friend": 0.55
+    }, 
+    "IocH446C9fSVivn2DX4I1uyyZeA2|image8": {
+        "woman": 0.581, 
+        "reddish brown color": 0.746, 
+        "coal black color": 0.853, 
+        "hair": 0.53, 
+        "person": 0.602, 
+        "female": 0.558, 
+        "girl": 0.578
+    }, 
+    "IocH446C9fSVivn2DX4I1uyyZeA2|image9": {
+        "gray color": 0.99, 
+        "rodent": 0.953, 
+        "rat": 0.948, 
+        "brown rat": 0.55, 
+        "animal": 0.954, 
+        "mammal": 0.954, 
+        "black rat": 0.563
     }
 }

@@ -15,6 +15,20 @@
 <link rel="stylesheet" type="text/css" href="css/imagenetwork.css" />
 <title>Image Network</title>
 </head>
+<style>
+	.resultBox {
+		background-color: #222;
+		border-radius: 6px; 
+		padding: 10px;
+	}
+	
+	.resultTextBox {
+		border-radius: 2px;
+		margin-bottom: 5px;
+		padding: 5px;
+		text-align: center;
+	}
+</style>
 <body>
 	<!-- Begin NavBar Module -->
 	<div id="headerContent"
@@ -339,18 +353,46 @@
 							});
 							
 							 storageRef.getDownloadURL().then(function(url){
-									
-								 	var xhttp = new XMLHttpRequest();
+								 
 									//gets the path
 									var path = "/"+window.location.pathname.split("/")[1];
 									//create url
-								
+									var url2 = path + "/ImageServlet?userID=" + userid + "&imageID=image"+num +"&imageUrl=" + url;
 									
-									
-									
-									var url2 = path + "/ImageServlet?userID=" + userid + "&imageID=image"+num +"&imageUrl=" + url;						
-									xhttp.open("GET", url2, false);
+								 	var xhttp = new XMLHttpRequest();					
+									xhttp.open("GET", url2, true);
 									xhttp.send();
+									
+									xhttp.onreadystatechange = function() {
+										if (this.readyState == 4 && this.status == 200) {
+											
+											var result = JSON.parse(this.responseText);
+											var parent = document.getElementById('coverbannerblock');
+											
+											var child = document.createElement('div');
+											child.className = 'resultBox';
+											
+											var title = document.createElement('h2');
+											title.className = 'buttonDivider';
+											title.style.width = 'auto';
+											title.style.marginBottom = '20px';
+											title.innerHTML = 'Image Results';
+											child.appendChild(title);
+											
+											for (var key in result) {
+												if (result.hasOwnProperty(key)) {
+													var element = document.createElement('div');
+													element.className = 'resultTextBox';
+													element.innerHTML = '<span style="color: #fff">' + key + '</span>';
+													
+													var color = getColor(result[key]);
+													element.style.backgroundColor = color;
+													child.appendChild(element);
+												}
+											}
+											parent.appendChild(child);
+										}
+									};	
 			
 							
 							}).catch(function(error){
@@ -389,6 +431,23 @@
 			
 			
 			</script>
-		
+			
+			<script>
+				function getColor(prob) {
+					var color;
+					if (prob >= 0.8) {
+						color = "#de0020";
+					} else if (prob >= 0.6) {
+						color = "#b2004c";
+					} else if (prob >= 0.4) {
+						color = "#850079";
+					} else if (prob >= 0.2) {
+						color = "#5900a5";
+					} else {
+						color = "#2c00d2";
+					}
+					return color;
+				}
+			</script>
 </body>
 </html>
