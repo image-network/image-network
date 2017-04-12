@@ -43,8 +43,9 @@
 			<table
 				style="text-align: center; background-color: #555555; width: 100%; border-bottom: 1px solid grey;">
 				<tr>
-					<td><img src="images/default_profilepicture.png"
+					<td><img id="profile_pic" src="images/default_profilepicture.png"
 						style="padding: 10px; border-radius: 25px;" width=70 /></td>
+						
 					<td>
 						<table style="text-align: left">
 							<tr>
@@ -215,6 +216,33 @@
 	    messagingSenderId: "268082674497"
 	  };
 	  firebase.initializeApp(config);
+	  
+	  
+	  var img = document.getElementById("profile_pic");
+	  
+	  firebase.auth().onAuthStateChanged(function(user) {
+		  if (user) {
+
+			  var userid = user.uid;
+
+			  firebase.database().ref('/users/'+ userid + '/profile_pic').once('value').then(function(snapshot){
+					var profilePic = snapshot.val();
+					
+					var storageRef = firebase.storage().ref(profilePic);
+			  
+					storageRef.getDownloadURL().then(function(url){
+						
+					  img.src = url;
+						
+					}).catch(function(error){
+						console.log(error);
+					});
+					
+			  });
+		  } else {
+		   
+		  }
+		});
 	  
 
       // Call initApp() upon the window loading
