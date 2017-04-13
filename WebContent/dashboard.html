@@ -226,8 +226,7 @@
           mainSigma.refresh();
           }
           
-          var uploader = document.getElementById('uploader');
-		  var fileButton = document.getElementById('fileButton');
+        
 		
 		  var img = document.getElementById("profile_pic");
 		  var img2 = document.getElementById("profile_pic2");
@@ -243,11 +242,10 @@
 				  userid = user.uid;
 				  
 					
-				  firebase.database().ref('/users/'+ userid + '/images/image0').once('value').then(function(snapshot){
+				  firebase.database().ref('/users/'+ userid + '/profile_pic').once('value').then(function(snapshot){
 						var profilePic = snapshot.val();
 						
 						var storageRef = firebase.storage().ref(profilePic);
-						console.log(profilePic);
 				  
 						storageRef.getDownloadURL().then(function(url){
 							
