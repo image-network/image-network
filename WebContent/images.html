@@ -355,9 +355,9 @@
 							 storageRef.getDownloadURL().then(function(url){
 								 
 									//gets the path
-									var path = "/"+window.location.pathname.split("/")[1];
+									var path = "/" + window.location.pathname.split("/")[1];
 									//create url
-									var url2 = path + "/ImageServlet?userID=" + userid + "&imageID=image"+num +"&imageUrl=" + url;
+									var url2 = path + "/ImageServlet?userID=" + userid + "&imageID=image"+ num +"&imageUrl=" + url;
 									
 								 	var xhttp = new XMLHttpRequest();					
 									xhttp.open("GET", url2, true);

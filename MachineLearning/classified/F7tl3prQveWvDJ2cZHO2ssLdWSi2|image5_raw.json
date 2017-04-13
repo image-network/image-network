@@ -1,0 +1,53 @@
+{
+    "images": [
+        {
+            "classifiers": [
+                {
+                    "classes": [
+                        {
+                            "score": 0.57, 
+                            "class": "religion related", 
+                            "type_hierarchy": "/person/religion related"
+                        }, 
+                        {
+                            "score": 0.675, 
+                            "class": "person"
+                        }, 
+                        {
+                            "score": 0.545, 
+                            "class": "soul patch facial hair"
+                        }, 
+                        {
+                            "score": 0.535, 
+                            "class": "people", 
+                            "type_hierarchy": "/person/people"
+                        }, 
+                        {
+                            "score": 0.53, 
+                            "class": "celebrity", 
+                            "type_hierarchy": "/person/adult/celebrity"
+                        }, 
+                        {
+                            "score": 0.533, 
+                            "class": "adult"
+                        }, 
+                        {
+                            "score": 0.903, 
+                            "class": "maroon color"
+                        }, 
+                        {
+                            "score": 0.552, 
+                            "class": "Indian red color"
+                        }
+                    ], 
+                    "classifier_id": "default", 
+                    "name": "default"
+                }
+            ], 
+            "resolved_url": "https://firebasestorage.googleapis.com/v0/b/image-network.appspot.com/o/user_uploads%2FIMG_4308_2.jpg?alt=media", 
+            "source_url": "https://firebasestorage.googleapis.com/v0/b/image-network.appspot.com/o/user_uploads%2FIMG_4308_2.jpg?alt=media"
+        }
+    ], 
+    "custom_classes": 0, 
+    "images_processed": 1
+}

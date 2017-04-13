@@ -63,6 +63,29 @@
         "aviator": 0.769, 
         "olive green color": 0.852
     }, 
+    "F7tl3prQveWvDJ2cZHO2ssLdWSi2|image4": {
+        "seat belt": 0.53, 
+        "person": 0.938, 
+        "copilot": 0.901, 
+        "device": 0.53, 
+        "aviator": 0.938, 
+        "green color": 0.922
+    }, 
+    "F7tl3prQveWvDJ2cZHO2ssLdWSi2|image6": {
+        "army officer": 0.59, 
+        "fatigues": 0.54, 
+        "serviceman": 0.83, 
+        "person": 0.83, 
+        "sage green color": 0.924, 
+        "military recruit": 0.538, 
+        "noncommissioned officer": 0.589, 
+        "uniform": 0.659, 
+        "soldier": 0.62, 
+        "bottle green color": 0.796, 
+        "peacekeeper": 0.542, 
+        "battle dress": 0.53, 
+        "military uniform": 0.659
+    }, 
     "IocH446C9fSVivn2DX4I1uyyZeA2|image3": {
         "alizarine red color": 0.91, 
         "eyepatch": 0.733, 
@@ -80,6 +103,16 @@
         "sunglass": 0.644, 
         "device": 0.731, 
         "blindfold": 0.547
+    }, 
+    "F7tl3prQveWvDJ2cZHO2ssLdWSi2|image5": {
+        "Indian red color": 0.552, 
+        "soul patch facial hair": 0.545, 
+        "people": 0.535, 
+        "maroon color": 0.903, 
+        "celebrity": 0.53, 
+        "religion related": 0.57, 
+        "person": 0.675, 
+        "adult": 0.533
     }, 
     "IocH446C9fSVivn2DX4I1uyyZeA2|image6": {
         "alizarine red color": 0.814, 

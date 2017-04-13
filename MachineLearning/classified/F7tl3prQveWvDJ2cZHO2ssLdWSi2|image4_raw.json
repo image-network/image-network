@@ -1,0 +1,44 @@
+{
+    "images": [
+        {
+            "classifiers": [
+                {
+                    "classes": [
+                        {
+                            "score": 0.901, 
+                            "class": "copilot", 
+                            "type_hierarchy": "/person/aviator/copilot"
+                        }, 
+                        {
+                            "score": 0.938, 
+                            "class": "aviator"
+                        }, 
+                        {
+                            "score": 0.938, 
+                            "class": "person"
+                        }, 
+                        {
+                            "score": 0.53, 
+                            "class": "seat belt", 
+                            "type_hierarchy": "/device/seat belt"
+                        }, 
+                        {
+                            "score": 0.53, 
+                            "class": "device"
+                        }, 
+                        {
+                            "score": 0.922, 
+                            "class": "green color"
+                        }
+                    ], 
+                    "classifier_id": "default", 
+                    "name": "default"
+                }
+            ], 
+            "resolved_url": "https://firebasestorage.googleapis.com/v0/b/image-network.appspot.com/o/user_uploads%2FIMG_4507.JPG?alt=media", 
+            "source_url": "https://firebasestorage.googleapis.com/v0/b/image-network.appspot.com/o/user_uploads%2FIMG_4507.JPG?alt=media"
+        }
+    ], 
+    "custom_classes": 0, 
+    "images_processed": 1
+}
