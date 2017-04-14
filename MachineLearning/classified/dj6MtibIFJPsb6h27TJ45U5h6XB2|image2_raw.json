@@ -1,0 +1,53 @@
+{
+    "images": [
+        {
+            "classifiers": [
+                {
+                    "classes": [
+                        {
+                            "score": 0.63, 
+                            "class": "supermarket (hypermarket)", 
+                            "type_hierarchy": "/marketplace/grocery store/supermarket (hypermarket)"
+                        }, 
+                        {
+                            "score": 0.649, 
+                            "class": "grocery store"
+                        }, 
+                        {
+                            "score": 0.652, 
+                            "class": "marketplace"
+                        }, 
+                        {
+                            "score": 0.602, 
+                            "class": "convenience store", 
+                            "type_hierarchy": "/shop/convenience store"
+                        }, 
+                        {
+                            "score": 0.618, 
+                            "class": "shop"
+                        }, 
+                        {
+                            "score": 0.53, 
+                            "class": "people", 
+                            "type_hierarchy": "/person/people"
+                        }, 
+                        {
+                            "score": 0.53, 
+                            "class": "person"
+                        }, 
+                        {
+                            "score": 0.957, 
+                            "class": "alizarine red color"
+                        }
+                    ], 
+                    "classifier_id": "default", 
+                    "name": "default"
+                }
+            ], 
+            "resolved_url": "https://firebasestorage.googleapis.com/v0/b/image-network.appspot.com/o/user_uploads%2FIMG_4135_2.jpg?alt=media", 
+            "source_url": "https://firebasestorage.googleapis.com/v0/b/image-network.appspot.com/o/user_uploads%2FIMG_4135_2.jpg?alt=media"
+        }
+    ], 
+    "custom_classes": 0, 
+    "images_processed": 1
+}

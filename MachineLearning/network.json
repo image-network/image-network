@@ -1,44 +1,16 @@
 {
-    "car": {
-        "F7tl3prQveWvDJ2cZHO2ssLdWSi2|image6": 0.05555555555555555, 
-        "text": 0.09523809523809523, 
-        "F7tl3prQveWvDJ2cZHO2ssLdWSi2|image4": 0.14285714285714285, 
-        "F7tl3prQveWvDJ2cZHO2ssLdWSi2|image5": 0.06896551724137931, 
-        "face": 0.08
+    "dj6MtibIFJPsb6h27TJ45U5h6XB2|image0": {
+        "dj6MtibIFJPsb6h27TJ45U5h6XB2|image2": 0.21052631578947367, 
+        "dj6MtibIFJPsb6h27TJ45U5h6XB2|image3": 0.11764705882352941
     }, 
-    "face": {
-        "F7tl3prQveWvDJ2cZHO2ssLdWSi2|image6": 0.1, 
-        "car": 0.08, 
-        "F7tl3prQveWvDJ2cZHO2ssLdWSi2|image4": 0.1875, 
-        "F7tl3prQveWvDJ2cZHO2ssLdWSi2|image5": 0.23809523809523808, 
-        "text": 0.125
+    "dj6MtibIFJPsb6h27TJ45U5h6XB2|image1": {
+        "dj6MtibIFJPsb6h27TJ45U5h6XB2|image3": 0.09090909090909091
     }, 
-    "F7tl3prQveWvDJ2cZHO2ssLdWSi2|image6": {
-        "car": 0.05555555555555555, 
-        "F7tl3prQveWvDJ2cZHO2ssLdWSi2|image4": 0.2, 
-        "F7tl3prQveWvDJ2cZHO2ssLdWSi2|image5": 0.08823529411764706, 
-        "text": 0.07407407407407407, 
-        "face": 0.1
+    "dj6MtibIFJPsb6h27TJ45U5h6XB2|image2": {
+        "dj6MtibIFJPsb6h27TJ45U5h6XB2|image0": 0.21052631578947367
     }, 
-    "F7tl3prQveWvDJ2cZHO2ssLdWSi2|image4": {
-        "F7tl3prQveWvDJ2cZHO2ssLdWSi2|image6": 0.2, 
-        "car": 0.14285714285714285, 
-        "F7tl3prQveWvDJ2cZHO2ssLdWSi2|image5": 0.15, 
-        "text": 0.07142857142857142, 
-        "face": 0.1875
-    }, 
-    "F7tl3prQveWvDJ2cZHO2ssLdWSi2|image5": {
-        "F7tl3prQveWvDJ2cZHO2ssLdWSi2|image6": 0.08823529411764706, 
-        "car": 0.06896551724137931, 
-        "F7tl3prQveWvDJ2cZHO2ssLdWSi2|image4": 0.15, 
-        "text": 0.15789473684210525, 
-        "face": 0.23809523809523808
-    }, 
-    "text": {
-        "F7tl3prQveWvDJ2cZHO2ssLdWSi2|image6": 0.07407407407407407, 
-        "car": 0.09523809523809523, 
-        "F7tl3prQveWvDJ2cZHO2ssLdWSi2|image4": 0.07142857142857142, 
-        "F7tl3prQveWvDJ2cZHO2ssLdWSi2|image5": 0.15789473684210525, 
-        "face": 0.125
+    "dj6MtibIFJPsb6h27TJ45U5h6XB2|image3": {
+        "dj6MtibIFJPsb6h27TJ45U5h6XB2|image0": 0.11764705882352941, 
+        "dj6MtibIFJPsb6h27TJ45U5h6XB2|image1": 0.09090909090909091
     }
 }

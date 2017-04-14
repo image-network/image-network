@@ -28,7 +28,7 @@ def getAnnotations():
 """ Takes a dictionary of image id to strings and creates a 2D dictionary
 	with edge relations containing jaccard similarities to other image strings
 """
-def string_network(string_dict, threshold=0.0):
+def string_network(string_dict, threshold=0.09):
 	network = {}
 	for stringID in string_dict:
 		s1 = string_dict[stringID]

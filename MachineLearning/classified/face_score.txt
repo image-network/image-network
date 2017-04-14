@@ -1,8 +1,0 @@
-official 0.604
-person 0.758
-Representative 0.549
-adult person 0.533
-protector (person) 0.533
-people 0.53
-Treasury 0.53
-orange color 0.654

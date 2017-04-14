@@ -1,4 +1,0 @@
-no-parking zone 0.87
-sign 0.53
-maroon color 0.791
-orange color 0.784

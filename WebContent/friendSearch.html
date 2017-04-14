@@ -226,19 +226,30 @@
 		    				 var newResult = document.createElement('div');
 		    				 newResult.className = 'newResult';
 		    				 
-		    				 var pic = focus.profile-pic;
-		    				 console.log(pic);
-							 var obj = {
-								 "name": focus.fullname,
-								 "username": focus.username,
-							 	 "email": focus.email,
-							 	 "images": focus.images
-							 }
-							 var json = encodeURIComponent(JSON.stringify(obj));
-							 console.log(json);
-		    				 newResult.innerHTML = '<a href="userProfile.jsp?json=' + json + '"><div>' + focus.fullname + '<br><span style="color: green; font-size: 0.9em;">@' + 
-		    				 	focus.username + '</span><br><br></div></a>';
-		    				 result.appendChild(newResult);
+ 		    				 var pic = focus.profile_pic;
+		    				 var fullURL;
+		    				 var storageRef = firebase.storage().ref(pic);
+		    				 storageRef.getDownloadURL().then(function(url) {
+									
+							 	fullURL = url;
+							 	var obj = {
+									 "name": focus.fullname,
+									 "username": focus.username,
+								 	 "email": focus.email,
+								 	 "url": fullURL,
+								 	 "images": focus.images
+								 }
+								 var json = encodeURIComponent(JSON.stringify(obj));
+								 console.log(json);
+			    				 newResult.innerHTML = '<a href="userProfile.jsp?json=' + json + '"><div>' + focus.fullname + '<br><span style="color: green; font-size: 0.9em;">@' + 
+			    				 	focus.username + '</span><br><br></div></a>';
+			    				 result.appendChild(newResult);
+								
+							 }).catch(function(error){
+								console.log(error);
+							 });
+		    				 
+		    				 /* console.log(pic); */
 		    				 
 		    			 }
 		    		 }
