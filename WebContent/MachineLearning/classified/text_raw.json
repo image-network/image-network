@@ -1,0 +1,33 @@
+{
+    "images": [
+        {
+            "image": "img/text.png", 
+            "classifiers": [
+                {
+                    "classes": [
+                        {
+                            "score": 0.87, 
+                            "class": "no-parking zone"
+                        }, 
+                        {
+                            "score": 0.53, 
+                            "class": "sign"
+                        }, 
+                        {
+                            "score": 0.791, 
+                            "class": "maroon color"
+                        }, 
+                        {
+                            "score": 0.784, 
+                            "class": "orange color"
+                        }
+                    ], 
+                    "classifier_id": "default", 
+                    "name": "default"
+                }
+            ]
+        }
+    ], 
+    "custom_classes": 0, 
+    "images_processed": 1
+}

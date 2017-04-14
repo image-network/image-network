@@ -1,6 +1,8 @@
 package servlets;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
@@ -44,8 +46,7 @@ public class ImageServlet extends HttpServlet {
 		imageUrl = correctImageUrl[0] + "user_uploads%2F" + correctImageUrl[1];
 
 		System.out.println(imageUrl);
-
-		String path = "/Users/kevinnguyen/Documents/Code/image-network/image-network/MachineLearning/";
+		String path = request.getServletContext().getResource("MachineLearning").getPath();
 		// Note that the path will be unique for you guys as well as pythonPath
 		// may be different.
 		// You will most likely use option 1 for python path below. Mine is more
@@ -59,26 +60,26 @@ public class ImageServlet extends HttpServlet {
 			ProcessBuilder pb = new ProcessBuilder(command);
 			Process p = pb.start();
 			// For debugging
-			// BufferedReader input = new BufferedReader(new
-			// InputStreamReader(p.getInputStream()));
-			// BufferedReader in = new BufferedReader(new
-			// InputStreamReader(p.getErrorStream()));
+			 BufferedReader input = new BufferedReader(new
+			 InputStreamReader(p.getInputStream()));
+			 BufferedReader in = new BufferedReader(new
+			 InputStreamReader(p.getErrorStream()));
 			p.waitFor();
 			// For debugging
-			// String s = null;
-			// while((s = in.readLine()) != null) System.out.println(s);
-			// while((s = input.readLine()) != null) System.out.println(s);
+			 String s = null;
+			 while((s = in.readLine()) != null) System.out.println(s);
+			 while((s = input.readLine()) != null) System.out.println(s);
 
 			ProcessBuilder pb2 = new ProcessBuilder("python", path + "jaccardSimilarity.py");
 			Process p2 = pb2.start();
 			// For debugging
-			// BufferedReader input2 = new BufferedReader(new
-			// InputStreamReader(p2.getInputStream()));
-			// BufferedReader in2 = new BufferedReader(new
-			// InputStreamReader(p2.getErrorStream()));
+			 BufferedReader input2 = new BufferedReader(new
+			 InputStreamReader(p2.getInputStream()));
+			 BufferedReader in2 = new BufferedReader(new
+			 InputStreamReader(p2.getErrorStream()));
 			p2.waitFor();
-			// while((s = in2.readLine()) != null) System.out.println(s);
-			// while((s = input2.readLine()) != null) System.out.println(s);
+			 while((s = in2.readLine()) != null) System.out.println(s);
+			 while((s = input2.readLine()) != null) System.out.println(s);
 
 			// After this point, netgraph and score files will have been updated
 			// Call sigma.refresh and can process score files.
@@ -88,7 +89,7 @@ public class ImageServlet extends HttpServlet {
 //			}
 			
 			// Instantiate a TxtParser to parse the score txt file
-			JSONParser parser = new JSONParser("/Users/kevinnguyen/Documents/Code/image-network/image-network/MachineLearning/classified/score.json", userId, imageId);
+			JSONParser parser = new JSONParser(request.getServletContext().getResource("MachineLearning/classified/score.json").getPath(), userId, imageId);
 			parser.parse();
 			ArrayList<Pair<String, Double>> results = parser.getResults();
 			
