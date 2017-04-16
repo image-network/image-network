@@ -291,7 +291,7 @@
     		console.log(fName);
     		console.log(lName);    		
     		
-    		console.log(snapshot.child("profile_pic").val());  
+    		//console.log(snapshot.child("profile_pic").val());  
     		
     		var storageRef = firebase.storage().ref(snapshot.child("profile_pic").val());
     		
@@ -313,15 +313,24 @@
     	      			"<button class='animatedButton' style='width: 100%' >Connect</button>"
     	      	buffer += "</td></tr></table>"
 
-    	      	buffer += "<h1 class='buttonDivider' > Status </h1>"
-    	      	buffer += "<p style='font-style: italic; color: #cccccc;'>" + eventNode.data.node.status + "</p>";
+    	      /* 	buffer += "<h1 class='buttonDivider' > Status </h1>"
+    	      	buffer += "<p style='font-style: italic; color: #cccccc;'>" + eventNode.data.node.status + "</p>"; */
     	      	buffer += "<h1 class='buttonDivider' > Recent Photos </h1>"
-    	      	if(eventNode.data.node.images != undefined)
-    	      	{
-    	      	buffer +="<img src="+eventNode.data.node.images.Picture1+" style='border-radius:6px' width=50 height=50/> ";
-    	      	buffer += "<img src="+eventNode.data.node.images.Picture2+" style='border-radius:6px' width=50 height=50/> ";
-    	      	buffer += "<img src="+eventNode.data.node.images.Picture3+" style='border-radius:6px' width=50 height=50/> ";
-    	      	}
+    	      
+    	      		firebase.database().ref('/users/'+ userId + '/imagesUrls').once("value").then(function(snapshot){
+						var num = snapshot.numChildren();
+						
+						for(i = num -1; i >= num-3; i--){
+						
+							buffer +="<img src="+ snapshot.child("image" + i).val(); +" style='border-radius:6px' width=50 height=50/> ";
+							
+						}
+						
+
+					});
+    	      	
+	    	      	
+    	      	
     	      	container.innerHTML = buffer;
     			
     		}).catch(function(error){	

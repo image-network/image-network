@@ -144,11 +144,17 @@
 		<div id="pokeWidget" class="ICWidget" style="position: absolute; width: 700px; height: 400px; overflow-y: scroll">
 			<h2 class="buttonDivider" style="width: auto">Thwips</h2>
 			<!-- APPEND POKABLE FRIENDS HERE -->
+			<table id = "thwips" style="text-align: center; width: 100%;">
+			
+			</table>
 		</div>
 		
 		<div id="pokedWidget" class="ICWidget" style="position: absolute; left: 800px; height: 400px; width: 100%; overflow-y: hidden">
 			<h2 class="buttonDivider" style="width: auto">Thwippers</h2>
 			<!-- APPEND OFFENDING FRIENDS HERE -->
+			<table id = "thwippers"  style="text-align: center; width: 100%;">
+			
+			</table>
 		</div>
 		
 	</div>
@@ -176,6 +182,10 @@
 	      
 	      var img = document.getElementById("profile_pic");
 	      
+	      var thwips = document.getElementById("thwips");
+	      var thwippers = document.getElementById("thwippers");
+	      
+	      
 		  firebase.auth().onAuthStateChanged(function(user) {
 			  if (user) {
 
@@ -195,6 +205,57 @@
 						});
 						
 				  });
+				  
+				  
+				  firebase.database().ref('/users').once('value').then(function(snapshot){
+						
+
+					  
+					  snapshot.forEach(function(childSnapshot){
+							
+						   var newRow = document.createElement("tr");
+						  	var newD1 = document.createElement("td");
+					  	
+						  	newD1.innerHTML = childSnapshot.child("fullname").val();
+
+						  	newRow.appendChild(newD1);
+							thwippers.appendChild(newRow);
+						  
+						  
+						  	var storageRef = firebase.storage().ref(childSnapshot.child("profile_pic").val());
+						  	
+						  	storageRef.getDownloadURL().then(function(url){
+						  		var newRow = document.createElement("tr");
+							  	var newD1 = document.createElement("td");
+							  	var newD2 = document.createElement("td");
+							  	var newImg = document.createElement("img");
+							  	
+							  	newD1.innerHTML = childSnapshot.child("fullname").val();
+							  	newImg.src = url;
+							  	newImg.width = 150;
+							  	
+
+							  	newD2.appendChild(newImg);
+							  	newRow.appendChild(newD1);
+								newRow.appendChild(newD2);
+								thwips.appendChild(newRow);
+						  		
+						  	}).catch(function(error){
+						  		console.log(error);
+						  	});
+						  	
+						  	
+					  });
+
+						
+							
+					}).catch(function(error){
+						console.log(error);
+					});
+						
+				  
+				  
+				  
 			  } else {
 			   
 			  }

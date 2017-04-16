@@ -234,30 +234,7 @@
 					  console.log(currentUser);
 					  userid = user.uid;
 					  
-				/* 	  
-					  firebase.database().ref('/users/'+ userid + '/images/image0').once('value').then(function(snapshot){
-							var profilePic = snapshot.val();
-							
-							var storageRef = firebase.storage().ref(profilePic);
-							console.log(profilePic);
-					  
-							storageRef.getDownloadURL().then(function(url){
-						
-							  var xhr = new XMLHttpRequest();
-							  xhr.responseType = 'blob';
-							  xhr.onload = function(event) {
-							    var blob = xhr.response;
-							  };
-							  xhr.open('GET', url);
-							  xhr.send();
-								
-							  img.src = url;
-								
-							}).catch(function(error){
-								console.log(error);
-							});
-							
-					  }); */ 
+			
 					  firebase.database().ref('/users/' + userid + '/profile_pic').once('value').then(function(snapshot){
 						 
 						  var profilePic = snapshot.val();
@@ -276,13 +253,12 @@
 					  firebase.database().ref('/users/'+ userid + '/imagesUrls').once("value").then(function(snapshot){
 						  
 							num = snapshot.numChildren();
-							console.log(num);
 							
 						
 					
 							for(i = num -1; i >= 0; i--){
-								console.log(snapshot.child("image" + i).val());
-							  	var newImage = document.createElement("img");
+
+								var newImage = document.createElement("img");
 								newImage.src = snapshot.child("image" + i).val();
 								newImage.height = 260;
 								newImage.className = "userImages";
@@ -503,7 +479,7 @@
 									var url2 = path + "/ImageServlet?userID=" + userid + "&imageID=image"+ num +"&imageUrl=" + url;
 									
 								 	var xhttp = new XMLHttpRequest();					
-									xhttp.open("GET", url2, true);
+								 	xhttp.open("GET", url2, true);
 									xhttp.send();
 									
 									xhttp.onreadystatechange = function() {
@@ -555,6 +531,7 @@
 											imageDiv.insertBefore(element, imageDiv.getElementsByTagName("div")[0]);
 										}
 									};	
+									
 			
 							
 							}).catch(function(error){
