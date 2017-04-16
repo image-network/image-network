@@ -28,7 +28,7 @@ def getAnnotations():
 """ Takes a dictionary of image id to strings and creates a 2D dictionary
 	with edge relations containing jaccard similarities to other image strings
 """
-def string_network(string_dict, threshold=0.09):
+def string_network(string_dict, threshold=0.0):
 	network = {}
 	for stringID in string_dict:
 		s1 = string_dict[stringID]
@@ -96,7 +96,7 @@ def generate_netgraph(network):
 			new_edge['source'] = node
 			new_edge['target'] = relation
 			netgraph['edges'].append(new_edge)
-	with open('../WebContent/sigma-data/netgraph.json', 'w') as json_file:
+	with open('../sigma-data/netgraph.json', 'w') as json_file:
 	# with open('netgraph.json', 'w') as json_file:
 		dump(netgraph, json_file, indent=4)
 

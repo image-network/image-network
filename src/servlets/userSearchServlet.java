@@ -7,7 +7,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import org.json.JSONObject;
 
 /**
  * Servlet implementation class userSearchServlet
@@ -28,20 +29,10 @@ public class userSearchServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("In user search servlet");
+		String json = request.getParameter("json");
+		JSONObject obj = new JSONObject(json);
 		
-		String uid = (String) request.getParameter("uid");
-		String fullname = (String) request.getParameter("fullname");
-		String username = (String) request.getParameter("username");
-		String email = (String) request.getParameter("email");
-		
-		HttpSession session = request.getSession(true);
-
-		session.setAttribute("uid", uid);
-		session.setAttribute("fullname", fullname);
-		session.setAttribute("username", username);
-		session.setAttribute("email", email);
-		
-		response.sendRedirect("userProfile.jsp");
 		return;
 	}
 

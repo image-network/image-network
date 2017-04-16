@@ -1,0 +1,45 @@
+{
+    "images": [
+        {
+            "classifiers": [
+                {
+                    "classes": [
+                        {
+                            "score": 0.694, 
+                            "class": "natural elevation", 
+                            "type_hierarchy": "/nature/natural elevation"
+                        }, 
+                        {
+                            "score": 0.908, 
+                            "class": "nature"
+                        }, 
+                        {
+                            "score": 0.581, 
+                            "class": "talus (rock at base of cliff)", 
+                            "type_hierarchy": "/nature/talus (rock at base of cliff)"
+                        }, 
+                        {
+                            "score": 0.53, 
+                            "class": "mountain range", 
+                            "type_hierarchy": "/nature/mountain range"
+                        }, 
+                        {
+                            "score": 0.957, 
+                            "class": "alabaster color"
+                        }, 
+                        {
+                            "score": 0.833, 
+                            "class": "ivory color"
+                        }
+                    ], 
+                    "classifier_id": "default", 
+                    "name": "default"
+                }
+            ], 
+            "resolved_url": "https://firebasestorage.googleapis.com/v0/b/image-network.appspot.com/o/user_uploads%2FWhitney%20(Front).jpg?alt=media", 
+            "source_url": "https://firebasestorage.googleapis.com/v0/b/image-network.appspot.com/o/user_uploads%2FWhitney (Front).jpg?alt=media"
+        }
+    ], 
+    "custom_classes": 0, 
+    "images_processed": 1
+}

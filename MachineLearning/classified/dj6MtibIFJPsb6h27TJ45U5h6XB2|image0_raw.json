@@ -1,0 +1,40 @@
+{
+    "images": [
+        {
+            "classifiers": [
+                {
+                    "classes": [
+                        {
+                            "score": 0.53, 
+                            "class": "television reporter", 
+                            "type_hierarchy": "/person/television reporter"
+                        }, 
+                        {
+                            "score": 0.697, 
+                            "class": "person"
+                        }, 
+                        {
+                            "score": 0.659, 
+                            "class": "social gathering", 
+                            "type_hierarchy": "/person/social gathering"
+                        }, 
+                        {
+                            "score": 0.801, 
+                            "class": "alizarine red color"
+                        }, 
+                        {
+                            "score": 0.765, 
+                            "class": "maroon color"
+                        }
+                    ], 
+                    "classifier_id": "default", 
+                    "name": "default"
+                }
+            ], 
+            "resolved_url": "https://firebasestorage.googleapis.com/v0/b/image-network.appspot.com/o/user_uploads%2FIMG_4292_2.jpg?alt=media", 
+            "source_url": "https://firebasestorage.googleapis.com/v0/b/image-network.appspot.com/o/user_uploads%2FIMG_4292_2.jpg?alt=media"
+        }
+    ], 
+    "custom_classes": 0, 
+    "images_processed": 1
+}

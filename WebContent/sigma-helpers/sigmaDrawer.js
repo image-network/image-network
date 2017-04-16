@@ -232,6 +232,11 @@ mainSigma.refresh();
 
 }
 
+
+function refreshSigma(filepath)
+{
+	sigma.parsers.json(filepath, mainSigma, function(){mainSigma.refresh();});
+}
 /* DrawFromJSON - renders a JSON
  * IMPORTS:
  * 
@@ -258,7 +263,9 @@ function drawFromJSON(filepath,divId, nodeColor, edgeColor, nodeSizeMin, nodeSiz
 			  minNodeSize: nodeSizeMin, 
 			  maxNodeSize: nodeSizeMax,
 			  scalingMode: 'outside',
-			  defaultNodeColor: nodeColor
+			  defaultNodeColor: nodeColor,
+			  defaultEdgeColor: nodeColor,
+			  defaultEdgeType: 'tapered'
 			  }
 		});
 		mainCamera = mainSigma.addCamera('main');
@@ -280,9 +287,12 @@ function drawFromJSON(filepath,divId, nodeColor, edgeColor, nodeSizeMin, nodeSiz
 				{
 					s.refresh();
 					
-					s.startForceAtlas2({worker: true, barnesHutOptimize: false, slowDown: 10.0, edgeWeightInfluence: 0.0, iterationsPerRender: 1000});
-					setTimeout(function(){s.stopForceAtlas2();}, 100);
+					s.startForceAtlas2({worker: true, barnesHutOptimize: false, slowDown: 10.0, edgeWeightInfluence: 10.0, iterationsPerRender: 1});
+					setTimeout(function(){s.stopForceAtlas2();}, 1000);
 				});
+		setInterval(function(){refreshSigma(filepath);
+		mainSigma.startForceAtlas2({worker: true, barnesHutOptimize: false, slowDown: 10.0, edgeWeightInfluence: 10.0, iterationsPerRender: 1});
+		setTimeout(function(){mainSigma.stopForceAtlas2();}, 1000);}, 15000);
 		
 }
 /* DrawFromGEXF - renders a GEXF
@@ -342,7 +352,6 @@ function drawFromGEXF(filepath,divId, nodeColor, edgeColor, nodeSizeMin, nodeSiz
 				});
 
 }
-
 
 //navigation helpers (sigma must be initialized)
 function moveCamera(direction, steps)

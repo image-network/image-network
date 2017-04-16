@@ -11,6 +11,8 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="org.eclipse.core.resources.jar"/>
 	<classpathentry kind="lib" path="/Users/EthanChang/Downloads/java-json.jar">
+
+	<classpathentry kind="lib" path="json-20160810.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>

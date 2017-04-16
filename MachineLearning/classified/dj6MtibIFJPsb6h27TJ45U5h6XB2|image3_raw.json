@@ -1,0 +1,38 @@
+{
+    "images": [
+        {
+            "classifiers": [
+                {
+                    "classes": [
+                        {
+                            "score": 0.897, 
+                            "class": "university"
+                        }, 
+                        {
+                            "score": 0.53, 
+                            "class": "church tower"
+                        }, 
+                        {
+                            "score": 0.547, 
+                            "class": "tower"
+                        }, 
+                        {
+                            "score": 0.622, 
+                            "class": "greenishness color"
+                        }, 
+                        {
+                            "score": 0.599, 
+                            "class": "pale yellow color"
+                        }
+                    ], 
+                    "classifier_id": "default", 
+                    "name": "default"
+                }
+            ], 
+            "resolved_url": "https://firebasestorage.googleapis.com/v0/b/image-network.appspot.com/o/user_uploads%2FWashU%20(Scrap).jpg?alt=media", 
+            "source_url": "https://firebasestorage.googleapis.com/v0/b/image-network.appspot.com/o/user_uploads%2FWashU (Scrap).jpg?alt=media"
+        }
+    ], 
+    "custom_classes": 0, 
+    "images_processed": 1
+}

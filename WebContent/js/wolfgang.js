@@ -76,6 +76,13 @@ function wolfgangInspect(e)
 			"Click here to open the sidebar at any time!";
 		moveTo(getOffset(e).left - 1000, getOffset(e).top + 200);
 	}
+	else if (idCandidate == "Image Results")
+	{
+		document.getElementById("wolfgangText").innerHTML = 
+			"Here's my guess at what your image contains!";
+		moveTo(getOffset(e).left - 300, getOffset(e).top + 100);
+		
+	}
 
 	else if(idCandidate == "View Profile Details")
 	{
