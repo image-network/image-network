@@ -43,7 +43,7 @@
 								<td id="dashboardProfile"></td>
 							</tr>
 							<tr>
-								<td><a href="profiledetails.html">Profile Details</a></td>
+								<td><a href="profile.html">Profile Details</a></td>
 							</tr>
 							<tr>
 								<td><a href="#" id="sign-out">Sign Out</a></td>
@@ -188,7 +188,7 @@
 	
 	      // Call initApp() upon the window loading
 	      window.onload = function() {
-
+			loadDashboardProfile();
 	      }
 	      
 	      var img = document.getElementById("profile_pic");
@@ -216,6 +216,28 @@
 			   
 			  }
 			});
+		  
+		  function loadDashboardProfile() {
+	    	  firebase.auth().onAuthStateChanged(function(user) {
+    				if (user) {
+	    				// Populate username info
+	    				var profile = document.getElementById('dashboardProfile');
+	    		
+	    				// Get the current user
+	    				/* var user = firebase.auth().currentUser; */
+	    				var ref = firebase.database().ref('users/' + user.uid);
+	    				ref.once('value').then(function(snapshot) {
+	    					var child = snapshot.child('username').val();
+	    					profile.innerHTML = child;
+	    				}).catch(function(error){
+	    					// Error occurred
+	    				});
+	    			} else {
+	    				// User is not signed in, segue to login page
+	    				window.location = 'login.html';
+    				}
+    		  });
+	      }
 	  </script>
 
 </html>

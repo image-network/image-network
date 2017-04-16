@@ -229,7 +229,7 @@
     				}
     		  });
 	      }
-	      
+	     </script>
 	      /* function loadUserImage() {
 			  var imageDiv = document.getElementById('url');
 			  var image = document.createElement('img');
