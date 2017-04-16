@@ -391,8 +391,16 @@
 											var result = JSON.parse(this.responseText);
 											var parent = document.getElementById('coverbannerblock');
 											
+											// Remove the results div if it exists. Prevents the div from getting
+											// too long
+											if (document.contains(document.getElementById('rb'))) {
+												document.getElementById('rb').remove();
+											}
+											
 											var child = document.createElement('div');
 											child.className = 'resultBox';
+											child.setAttribute('id', 'rb');
+											console.log('id: ' + child.id);
 											
 											var title = document.createElement('h2');
 											title.className = 'buttonDivider';

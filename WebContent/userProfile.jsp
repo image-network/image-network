@@ -15,7 +15,7 @@
 	String username = obj.getString("username");
 	String email = obj.getString("email");
 	
- 	String url = obj.getString("url");
+ 	// String url = obj.getString("url");
 	
 /* 	JSONObject images = obj.getJSONObject("images");
 	String profile = images.getString("image0");
@@ -150,7 +150,7 @@
 		margin: 0 auto; margin-top: 100px; background-color: #222222; 
 		padding-bottom: 30px; padding-top: 15px; border-radius: 5px;">
 			<div id="name"><%=name%></div>
-			<img src=<%=url%>id="profile-img" style="width: 150px; border-radius: 10px; margin-bottom: 10px;"/>
+			<%-- <!-- <img src=<%=url%>id="profile-img" style="width: 150px; border-radius: 10px; margin-bottom: 10px;"/> --> --%>
 			<div id="username" style="margin-bottom: 10px;">@<%=username%></div>
 			<div id="email"><%=email%></div>
 		</div>
