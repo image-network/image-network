@@ -228,8 +228,8 @@
 		    				 var newResult = document.createElement('div');
 		    				 newResult.className = 'newResult';
 		    				 
- 		    				 /* var pic = focus.profile_pic;
-		    				 var fullURL;
+ 		    				 var url = focus.profile_pic;
+		    				 /* var fullURL;
 		    				 var storageRef = firebase.storage().ref(pic);
 		    				 storageRef.getDownloadURL().then(function(url) {
 									
@@ -238,7 +238,7 @@
 								 "name": focus.fullname,
 								 "username": focus.username,
 							 	 "email": focus.email,
-/* 							 	 "url": fullURL, */
+							 	 "url": url,
 							 	 "images": focus.images
 							 }
 							 var json = encodeURIComponent(JSON.stringify(obj));
