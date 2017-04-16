@@ -468,33 +468,7 @@ function selectNode(nodeName)
 	mainSigma.refresh();
 }
 /**Fetches a node, parses it given an assumed paradigm, and loads it to the specified div **/
-function writeNodeToDiv(eventNode, container)
-{
-	container.setAttribute("class", "loginForm");;
-	buffer = "";
-	
-	buffer += "<h1 class='buttonDivider' >" + eventNode.data.node.fname + " " + eventNode.data.node.lname + "</h1>";
-	
-	buffer += "<table style='text-align: left; width: 100%'><tr><td>"
-	buffer += "<img src="+eventNode.data.node.profilePicture+" style='border-radius:16px' width=100 height=100/> <br />";
-	buffer += "</td><td>"
-	buffer += "<button class='animatedButton' style='width: 100%' >View Profile Details</button>" +
-			"<br /> " +
-			"<button class='animatedButton' style='width: 100%' >Connect</button>"
-	buffer += "</td></tr></table>"
 
-	buffer += "<h1 class='buttonDivider' > Status </h1>"
-	buffer += "<p style='font-style: italic; color: #cccccc;'>" + eventNode.data.node.status + "</p>";
-	buffer += "<h1 class='buttonDivider' > Recent Photos </h1>"
-	if(eventNode.data.node.images != undefined)
-	{
-	buffer +="<img src="+eventNode.data.node.images.Picture1+" style='border-radius:6px' width=50 height=50/> ";
-	buffer += "<img src="+eventNode.data.node.images.Picture2+" style='border-radius:6px' width=50 height=50/> ";
-	buffer += "<img src="+eventNode.data.node.images.Picture3+" style='border-radius:6px' width=50 height=50/> ";
-	}
-	container.innerHTML = buffer;
-	
-}
 setTimeout(function(){selectNode(conductorName)},100);
 /*
 sigma.classes.graph.addMethod('neighbors', function(nodeId) {

@@ -273,57 +273,31 @@
 				
 					  
 					  var num;
-					  firebase.database().ref('/users/'+ userid + '/images').once("value").then(function(snapshot){
+					  firebase.database().ref('/users/'+ userid + '/imagesUrls').once("value").then(function(snapshot){
 						  
 							num = snapshot.numChildren();
 							console.log(num);
 							
-							
-						for(i = 0; i < num; i++){
-							var query =	firebase.database().ref('/users/'+ userid + '/images/image'+i)//.orderByKey();
 						
-							query.once('value').then(function(snapshot){
-
-						//		snapshot.forEach(function(childSnapshot){
-										
-										console.log(snapshot.key);
-										
-										var pic = snapshot.val();
-										
-										var storageRef = firebase.storage().ref(pic);
-								  
-										storageRef.getDownloadURL().then(function(url){
-	 
-										 
-										 	 
-										  	var newImage = document.createElement("img");
-											newImage.src = url;
-											newImage.height = 260;
-											newImage.className = "userImages";
-											newImage.style.margin = 30;
-											
-											var element = document.createElement('div');
-											element.setAttribute('style', 'width: 50%; margin: 25px auto;');
-											
-											
-											element.appendChild(newImage);
-							
-											imageDiv.appendChild(element);
-											
-						//			});
+					
+							for(i = num -1; i >= 0; i--){
+								console.log(snapshot.child("image" + i).val());
+							  	var newImage = document.createElement("img");
+								newImage.src = snapshot.child("image" + i).val();
+								newImage.height = 260;
+								newImage.className = "userImages";
+								newImage.style.margin = 30;
+								
+								var element = document.createElement('div');
+								element.setAttribute('style', 'width: 50%; margin: 25px auto;');
+								
+								
+								element.appendChild(newImage);
+				
+								imageDiv.appendChild(element);
+					
 									
-
-										
-								      
-										
-									});
-
-									
-							  }).catch(function(error){
-									console.log(error);
-								});
-							
-						}
+							}
 							
 						});
 						
@@ -364,22 +338,23 @@
 							var userid = user.uid;
 							var num = 0;
 							
-						
-								
-								var updates = {};
-								var path = '/users/' + userid + '/profile_pic';
-								
-								updates['/users/' + userid + '/profile_pic'] = storageRef.fullPath;
-								firebase.database().ref().update(updates)
-								
-
+							
+							var updates = {};
+							var path = '/users/' + userid + '/profile_pic';
+							
+							updates['/users/' + userid + '/profile_pic'] = storageRef.fullPath;
+							firebase.database().ref().update(updates)
+							
+							
 							
 							 storageRef.getDownloadURL().then(function(url){
 								 
+
+								 /* 
 									//gets the path
 									var path = "/"+window.location.pathname.split("/")[1];
 									//create url
-									var url2 = path + "/ImageServlet?userID=" + userid + "&imageID=image"+num +"&imageUrl=" + url;
+									var url2 = path + "/ImageServlet?userID=" + userid + "&imageID=profile_pic"+"&imageUrl=" + url;
 									
 								 	var xhttp = new XMLHttpRequest();					
 									xhttp.open("GET", url2, true);
@@ -388,6 +363,7 @@
 									xhttp.onreadystatechange = function() {
 										if (this.readyState == 4 && this.status == 200) {
 											
+											// image analysis
 											var result = JSON.parse(this.responseText);
 											var parent = document.getElementById('coverbannerblock');
 											
@@ -400,6 +376,7 @@
 											title.style.marginBottom = '20px';
 											title.innerHTML = 'Image Results';
 											child.appendChild(title);
+											mainSigma.refresh();
 											
 											for (var key in result) {
 												if (result.hasOwnProperty(key)) {
@@ -413,10 +390,29 @@
 												}
 											}
 											parent.appendChild(child);
-										}
-									};	
-			
+											 */
+											//ajax call to append an image
+											
+											img.src = url;
+											
+											/* var newImage = document.createElement("img");
+											newImage.src = url;
+											newImage.height = 260;
+											newImage.className = "userImages";
+											newImage.style.margin = 30;
+											
+											var element = document.createElement('div');
+											element.setAttribute('style', 'width: 50%; margin: 25px auto;');
+											
+											
+											element.appendChild(newImage);
 							
+											imageDiv.insertBefore(element, imageDiv.getElementsByTagName("div")[0]); 
+									 
+									};		}*/
+			
+									
+						
 							}).catch(function(error){
 								console.log(error);
 							});
@@ -426,6 +422,7 @@
 						}
 					)			
 				}
+				
 				
 				
 				
@@ -465,7 +462,7 @@
 								num = snapshot.numChildren();
 								
 								var updates = {};
-								var path = '/users/' + userid + '/images/image' + num;
+								//	var path = '/users/' + userid + '/images/image' + num;
 								
 								updates['/users/' + userid + '/images/image' + num] = storageRef.fullPath;
 								firebase.database().ref().update(updates)
@@ -473,7 +470,24 @@
 
 							});
 							
+							
+							
 							 storageRef.getDownloadURL().then(function(url){
+								 
+								 
+								 	//create an array of image urls in firebase
+								 	
+								 	firebase.database().ref('/users/'+ userid + '/imagesUrls').once("value").then(function(snapshot){
+										num = snapshot.numChildren();
+										
+										var updates = {};
+										//var path = '/users/' + userid + '/images/imagesUrls' + num;
+										
+										updates['/users/' + userid + '/imagesUrls/image' + num] = url;
+										firebase.database().ref().update(updates)
+										
+		
+									});
 								 
 									//gets the path
 									var path = "/"+window.location.pathname.split("/")[1];
@@ -487,6 +501,7 @@
 									xhttp.onreadystatechange = function() {
 										if (this.readyState == 4 && this.status == 200) {
 											
+											// image analysis
 											var result = JSON.parse(this.responseText);
 											var parent = document.getElementById('coverbannerblock');
 											
@@ -499,6 +514,7 @@
 											title.style.marginBottom = '20px';
 											title.innerHTML = 'Image Results';
 											child.appendChild(title);
+											mainSigma.refresh();
 											
 											for (var key in result) {
 												if (result.hasOwnProperty(key)) {
@@ -512,6 +528,23 @@
 												}
 											}
 											parent.appendChild(child);
+											
+											//ajax call to append an image
+											
+											
+											var newImage = document.createElement("img");
+											newImage.src = url;
+											newImage.height = 260;
+											newImage.className = "userImages";
+											newImage.style.margin = 30;
+											
+											var element = document.createElement('div');
+											element.setAttribute('style', 'width: 50%; margin: 25px auto;');
+											
+											
+											element.appendChild(newImage);
+							
+											imageDiv.insertBefore(element, imageDiv.getElementsByTagName("div")[0]);
 										}
 									};	
 			

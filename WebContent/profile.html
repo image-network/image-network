@@ -156,12 +156,10 @@
 	    	  firebase.auth().onAuthStateChanged(function(user) {
 				  if (user) {
 					  currentUser = user;
-					  console.log(user);
-					  console.log(currentUser);
 					  userid = user.uid;
 					  
 						
-					  firebase.database().ref('/users/'+ userid + '/images/image0').once('value').then(function(snapshot){
+					  firebase.database().ref('/users/'+ userid + '/profile_pic').once('value').then(function(snapshot){
 							var profilePic = snapshot.val();
 							
 							var storageRef = firebase.storage().ref(profilePic);

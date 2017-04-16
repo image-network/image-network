@@ -5,21 +5,22 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class JSONParser {
-	
+
 	private String json;
 	private String uid;
 	private String imageId;
-	
+
 	private ArrayList<Pair<String, Double>> results;
 
 	public JSONParser(String filename, String uid, String imageId) {
 		this.uid = uid;
 		this.imageId = imageId;
 		this.results = new ArrayList<Pair<String, Double>>();
-		
+
 		BufferedReader br = null;
 		String build = "";
 		try {
@@ -43,8 +44,8 @@ public class JSONParser {
 			}
 		}
 	}
-	
-	public void parse() {
+
+	public void parse() throws JSONException {
 		JSONObject obj = new JSONObject(json);
 		JSONObject focus = obj.getJSONObject(uid + "|" + imageId);
 		for (int i = 0; i < focus.names().length(); i++) {
@@ -54,7 +55,9 @@ public class JSONParser {
 			results.add(pair);
 		}
 	}
-	
-	public ArrayList<Pair<String, Double>> getResults() { return results; }
-	
+
+	public ArrayList<Pair<String, Double>> getResults() {
+		return results;
+	}
+
 }
