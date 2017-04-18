@@ -50,12 +50,14 @@
 				<tr>
 					<td><a id="create-account-link" href="signup.html">New User? Create an account</a></td>
 				</tr>
+				<tr>
+					<td><a id="guest_user" style = "color: #4bb88b" href="explore.html">Log In as a Guest User</a></td>
+				</tr>
 			</table>
 		</div>
 	<div id="negativeSpace">
 		<h1 class="hoverableText"
-			style="opacity: 0; animation: fadeIn 1s ease-in 0.5s forwards; font-family: 'Muli', sans-serif;">A
-			place to spread your rarest Pepes.</h1>	<br />
+			style="opacity: 0; animation: fadeIn 1s ease-in 0.5s forwards; font-family: 'Muli', sans-serif;">Find your home in the image network!</h1>	<br />
 		<p class="hoverableText"
 			style="opacity: 0; animation: fadeIn 1s ease-in 2.5s forwards; font-family: 'Muli', sans-serif; font-size: 1.15em;">Discover
 			the world from the comfort of your computer. Browse landscapes and memories and submit your own to the network.</p>
@@ -94,8 +96,15 @@
 	   */
 	  function initAppLogin() {
 	  	document.getElementById('login').addEventListener('click', toggleLogIn, false);
+	  	document.getElementById('guest_user').addEventListener('click', setUpGuest, false);
 	  } // END initApp()
 
+	  
+	  function setUpGuest(){
+		  localStorage.setItem("guest", "true");
+		  
+	  }
+	  
       // Call initApp() upon the window loading
       window.onload = function() {
         initAppLogin();

@@ -80,13 +80,11 @@
 				document.getElementById("database-adjacent-reverse").style.animation = "offscreenLeft 0.1s forwards";
 				function toggleNavBar() {
 					if (!sideToggled)
-
 						document.getElementById("database-adjacent-reverse").style.animation = "offscreenLeft 0.1s forwards";
 					else
 						document.getElementById("database-adjacent-reverse").style.animation = "backToScreenLeft 0.1s forwards";
 					sideToggled = !sideToggled;
 				}
-
 				function mouseOverNavBar() {
 					if (document.getElementById("database-adjacent-reverse").style.animation === "offscreenLeft 0.1s forwards")
 						document.getElementById("database-adjacent-reverse").style.animation = "backToScreenLeft 0.1s forwards";
@@ -164,7 +162,7 @@
 			</table>
 		</div>
 		<br />
-		<div class="ICWidget">
+		<div id = "recentimages" class="ICWidget" style=" width: 300px; height: 300px; overflow: scroll">
 			<h2 class="buttonDivider" style="width: auto">Recent Images</h2>
 			<!-- APPEND FEED IMAGES HERE -->
 			<br />
@@ -184,8 +182,12 @@
 	<div id="rightblock"
 		style="position: absolute; top: 75px; bottom: 45px; right: 45px; left: 400px; text-align: left; line-height: 1">
 	
-		<div id="recentActivityWidget" class="ICWidget" style="width: 100%; height: 100%">
+		<div id="recentActivityWidget" class="ICWidget" style="width: 100%; height: 100%; overflow: scroll">
 			<h2 class="buttonDivider" style="width: auto">Recent Activity</h2>
+			<table id = "activityTable" style="text-align: center; width: 100%; border-bottom: 1px solid grey;">
+			
+			
+			</table>	
 			<!-- APPEND FEED DATA HERE AS BANNER DATA -->
 		</div>
 	</div>
@@ -204,7 +206,6 @@
 	  };
 	  firebase.initializeApp(config);
 	  
-
       // Call initApp() upon the window loading
       window.onload = function() {
     	  
@@ -230,15 +231,16 @@
 		
 		  var img = document.getElementById("profile_pic");
 		  var img2 = document.getElementById("profile_pic2");
+		  var imageDiv = document.getElementById("recentimages");
+		  var raTable = document.getElementById("activityTable");
 		  
 		  var currentUser;
 		  var userid;
 		  
+		  
 		  firebase.auth().onAuthStateChanged(function(user) {
 			  if (user) {
 				  currentUser = user;
-				  console.log(user);
-				  console.log(currentUser);
 				  userid = user.uid;
 				  
 					
@@ -257,6 +259,59 @@
 						});
 						
 				  });
+				  
+				  var num;
+				  firebase.database().ref('/users/'+ userid + '/imagesUrls').once("value").then(function(snapshot){
+					  
+						num = snapshot.numChildren();
+						
+					
+				
+						for(i = num -1; i >= num-3; i--){
+							//recent images
+							var newImage = document.createElement("img");
+							newImage.src = snapshot.child("image" + i).val();
+							newImage.width = 300;
+							
+							newImage.className = "userImages";
+							newImage.style.margin = 30;
+							
+							var element = document.createElement('div');
+							element.setAttribute('style', 'width: 100%; margin: 15px auto;');
+							element.appendChild(newImage);
+			
+							imageDiv.appendChild(element);
+				
+							
+							//recent activity
+							var newRow = document.createElement("tr");
+							var newD1 = document.createElement("td");
+							var newD2 = document.createElement("td");
+							
+							var newImage2 = document.createElement("img");
+							newImage2.src = snapshot.child("image" + i).val();
+							newImage2.width = 300;
+							
+							newImage2.className = "userImages";
+							newImage2.style.margin = 30;		
+							
+							newD2.setAttribute('style', 'width: 50%; margin: 15px auto;');
+							newD2.appendChild(newImage2);
+							
+							newD1.innerHTML = "Uploaded";
+					
+							newRow.appendChild(newD1);
+							newRow.appendChild(newD2);
+							
+			
+							raTable.appendChild(newRow);
+							
+							
+								
+						}
+						
+					});
+				  
 			  } else {
 			   
 			  }
@@ -277,14 +332,12 @@
    				});
    			}
    		}
-
    		function initHome() {
     		firebase.auth().onAuthStateChanged(function(user) {
 				if (user) {
 					// Populate username info
 					var profile = document.getElementById('profile');
 					var profile2 = document.getElementById('dashboardProfile');
-
 					// Get the current user
 					/* var user = firebase.auth().currentUser; */
 					var ref = firebase.database().ref('users/' + user.uid);
@@ -300,7 +353,6 @@
 					window.location = 'login.html';
 				}
 			});
-
 			document.getElementById('sign-out').addEventListener('click', handleLogOut, false);
 		}
    	</script>
